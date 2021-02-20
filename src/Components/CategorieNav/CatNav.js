@@ -1,7 +1,17 @@
+import './CatNav.css';
 const CatNav = () => {
-    return(
+    return (
         <>
-         <h1  className="App">CAT NAVIGATION</h1>
+            <div className="cat-nav">
+                <div className="cats">
+                    <h1>mens</h1>
+                    <li className="select-cat">boots</li>
+                    <li className="select-cat">sport</li>
+                    <h1>womens</h1>
+                    <li className="select-cat">boots</li>
+                    <li className="select-cat">heels</li>
+                </div>
+            </div>
         </>
     );
 }
