@@ -6,8 +6,7 @@
 
 .card-container {
     height: 600px;
-    border: black solid 1px;
-    
+    border: teal solid 1px; 
 }
 
 .card-body {
