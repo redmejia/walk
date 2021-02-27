@@ -24,3 +24,5 @@ yarn-error.log*
 
 *.*txt
 
+# delete this when get picture from server
+/src/assets
