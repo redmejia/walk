@@ -1,35 +1,27 @@
-import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import './CatNav.css';
-import { loadCategorie } from "../../Redux/Actions/CategorieAction";
-import { useEffect, useState } from 'react';
-// import { bindActionCreators } from "redux";
-import { HEELS, MENS_BOOTS, MENS_SPORT, WOMENS_BOOTS } from '../../Api/Utils/Constants';
-const CatNav = ({ loadCategorie }) => {
-    const [select, setSelecte] = useState(false)
-    // const mensBoots = () => {
-    //     // alert("mierda")
-    //      loadCategorie(MENS_BOOTS)
-    // }
-    useEffect(() => {
-        loadCategorie(MENS_BOOTS)
-    }, [loadCategorie])
-    // BAD TRY NEW WAY.
+const CatNav = () => {
     return (
         <>
             <div className="cat-nav">
                 <div className="cats">
                     <h1>mens</h1>
-                    <li className="select-cat" >boots</li>
-                    <li className="select-cat">sport</li>
+                    <li className="select-cat">
+                        <NavLink to="/mens-boots" >boots</NavLink>
+                    </li>
+                    <li className="select-cat">
+                        <NavLink to="/mens-sport" >sport</NavLink>
+                    </li>
                     <h1>womens</h1>
-                    <li className="select-cat">boots</li>
-                    <li className="select-cat">heels</li>
+                    <li className="select-cat">
+                        <NavLink to="/womens-boots" >boots</NavLink>
+                    </li>
+                    <li className="select-cat">
+                        <NavLink to="/heels">heels</NavLink>
+                    </li>
                 </div>
             </div>
         </>
     );
 }
-const mapDispatchToProps = {
-        loadCategorie
-}
-export default connect(null, mapDispatchToProps)(CatNav);
+export default CatNav;

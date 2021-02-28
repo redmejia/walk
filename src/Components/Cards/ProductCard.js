@@ -1,5 +1,5 @@
 import './Cards.css'
-import logo from '../../assets/zapato.jpg'
+import logo from '../../assets/heels.jpg'
 import Scroll from '../Scroll/Scroll'
 const ProductCard = ({ data }) => {
     return (
@@ -8,13 +8,13 @@ const ProductCard = ({ data }) => {
                 <div className="product-container" onClick={() => { alert("mierda") }}>
                     {data.map(d => {
                         return (
-                            <div className="card-container">
-                                <img src={logo} alt="Avatar" style={{ width: '100%' }}></img>
+                            <div className="card-container" key={d.pro_id}>
+                                <img src={logo} alt="Avatar" style={{ width: '100%', height : 460}}></img>
                                 <div className="card-body">
-                                    <div key={d.pro_id}>
-                                        <p>{d.name}</p>
-                                        <p>{d.color}</p>
-                                    </div>
+                                    <h2 style={{ color: 'blue' }}>{d.name}</h2>
+                                    <p style={{ fontWeight: 'bold' }}>{d.color}</p>
+                                    <p>$ {d.price}</p>
+                                    {/* <p>stars</p>  */}
                                 </div>
                             </div>
                         );

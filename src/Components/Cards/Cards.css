@@ -1,15 +1,16 @@
 .product-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
+    gap: 10px;
+    cursor: pointer;
 }
 
 .card-container {
     height: 600px;
+    /* background-color: black; */
     border: teal solid 1px; 
 }
 
 .card-body {
-    height: 100px;
-    cursor: pointer;
+    margin-left: 12px;
 }

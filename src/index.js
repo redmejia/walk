@@ -8,9 +8,10 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { categorie } from "./Redux/Reducers/CategorieReducer";
+import { BrowserRouter as Router } from "react-router-dom";
 const rootReducer = combineReducers(
   {
-    categorie   
+    categorie
   }
 )
 
@@ -22,7 +23,9 @@ const store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store} >
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
