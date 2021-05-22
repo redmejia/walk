@@ -3,18 +3,22 @@ import ProductCard from "../../Cards/ProductCard"
 import { loadCategorie } from "../../../Redux/Actions/CategorieAction";
 import { useEffect } from "react";
 import { MENS_SPORT } from "../../../Api/Utils/Constants";
+import CatNav from "../../CategorieNav/CatNav";
 
-const Sport = ({loadCategorie, categorie}) => {
-    useEffect(()=>{loadCategorie(MENS_SPORT)}, [loadCategorie])
-    return(
+const Sport = ({ loadCategorie, categorie }) => {
+    useEffect(() => { loadCategorie(MENS_SPORT) }, [loadCategorie])
+    return (
         <>
-            <ProductCard data={categorie} />        
+            {/* <div className="product-navs"> */}
+                <CatNav />
+            {/* </div> */}
+            <ProductCard data={categorie} />
         </>
     );
 }
 const mapStateToProps = (state) => {
-    return{
-        categorie : state.categorie
+    return {
+        categorie: state.categorie
     }
 }
 const mapDispatchToProps = {

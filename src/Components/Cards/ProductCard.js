@@ -1,5 +1,5 @@
 import './Cards.css'
-import logo from '../../assets/heels.jpg'
+import logo from '../../assets/zapato.jpg'
 import Scroll from '../Scroll/Scroll'
 const ProductCard = ({ data }) => {
     return (

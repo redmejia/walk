@@ -2,14 +2,16 @@ import { useEffect } from "react"
 import { connect } from "react-redux"
 import { WOMENS_BOOTS } from "../../../Api/Utils/Constants"
 import { loadCategorie } from "../../../Redux/Actions/CategorieAction";
+import CatNav from "../../CategorieNav/CatNav";
 import Boots from "../WoMens/WoMens"
 
-const WomensBoots = ({loadCategorie}) =>{
-    useEffect(()=>{
+const WomensBoots = ({ loadCategorie }) => {
+    useEffect(() => {
         loadCategorie(WOMENS_BOOTS)
-    },[loadCategorie])
-    return(
+    }, [loadCategorie])
+    return (
         <>
+            <CatNav />
             <Boots />
         </>
     )
