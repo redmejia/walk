@@ -1,10 +1,13 @@
 import './App.css';
+import Products from './Components/Products/Products';
+
 
 
 const App = () => {
   return (
     <>
-      <h1>hello world!</h1>
+      <Products />
+      {/* user register/login */}
     </>
   );
 }

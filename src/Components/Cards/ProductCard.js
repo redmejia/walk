@@ -4,13 +4,15 @@ import Scroll from '../Scroll/Scroll'
 const ProductCard = ({ data }) => {
     return (
         <>
-            <Scroll>
-                <div className="product-container" onClick={() => { alert("mierda") }}>
+            <div className="container">
+                {/* <Scroll>  not yet */}
+                <div className="row row-cols-4 mt-5">
                     {data.map(d => {
                         return (
-                            <div className="card-container" key={d.pro_id}>
-                                <img src={logo} alt="Avatar" style={{ width: '100%', height : 460}}></img>
-                                <div className="card-body">
+                            <div className="col">
+                                <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
+                                <div>
+                                    {/* <div className="card-body"> */}
                                     <h2 style={{ color: 'blue' }}>{d.name}</h2>
                                     <p style={{ fontWeight: 'bold' }}>{d.color}</p>
                                     <p>$ {d.price}</p>
@@ -20,7 +22,8 @@ const ProductCard = ({ data }) => {
                         );
                     })}
                 </div>
-            </Scroll>
+                {/* </Scroll> */}
+            </div>
         </>
     )
 }

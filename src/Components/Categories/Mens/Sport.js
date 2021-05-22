@@ -3,15 +3,11 @@ import ProductCard from "../../Cards/ProductCard"
 import { loadCategorie } from "../../../Redux/Actions/CategorieAction";
 import { useEffect } from "react";
 import { MENS_SPORT } from "../../../Api/Utils/Constants";
-import CatNav from "../../CategorieNav/CatNav";
 
 const Sport = ({ loadCategorie, categorie }) => {
     useEffect(() => { loadCategorie(MENS_SPORT) }, [loadCategorie])
     return (
         <>
-            {/* <div className="product-navs"> */}
-                <CatNav />
-            {/* </div> */}
             <ProductCard data={categorie} />
         </>
     );
