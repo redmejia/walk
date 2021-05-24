@@ -12,11 +12,9 @@ const ProductCard = ({ data }) => {
                             <div className="col">
                                 <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
                                 <div>
-                                    {/* <div className="card-body"> */}
                                     <h2 style={{ color: 'blue' }}>{d.name}</h2>
                                     <p style={{ fontWeight: 'bold' }}>{d.color}</p>
                                     <p>$ {d.price}</p>
-                                    {/* <p>stars</p>  */}
                                 </div>
                             </div>
                         );

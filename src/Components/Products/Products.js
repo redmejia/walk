@@ -3,22 +3,24 @@ import MensBoots from "../Categories/Mens/MensBoots";
 import Sport from "../Categories/Mens/Sport";
 import Heels from "../Categories/Womens/Heels";
 import WomensBoots from "../Categories/Womens/WomensBoots";
+import ProductNav from "../ProductNav/ProductNav";
 import './Products.css';
 const Products = () => {
     return (
         <>
             <Router>
+                <ProductNav />
                 <Switch>
-                    <Route exact path="/womens/boots">
+                    <Route  path="/womens/boots">
                         <WomensBoots />
                     </Route>
-                    <Route exact path="/heels">
+                    <Route  path="/heels">
                         <Heels />
                     </Route>
-                    <Route exact path="/mens/boots">
+                    <Route  path="/mens/boots">
                         <MensBoots />
                     </Route>
-                    <Route exact path="/sport">
+                    <Route path="/sport">
                         <Sport />
                     </Route>
                 </Switch>

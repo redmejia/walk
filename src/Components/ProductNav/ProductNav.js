@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const ProductNav = () => {
     return (
-        <div className="container">
+        <div className="container mt-3">
             <div class="btn-group" role="group" aria-label="Basic example">
                 <div class="dropdown">
                     <button
@@ -17,6 +17,7 @@ const ProductNav = () => {
                         <li><Link to="/heels">heels</Link></li>
                     </ul>
                 </div>
+
                 <div class="dropdown">
                     <button
                         class="btn dropdown-toggle drop-btn"
