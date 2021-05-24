@@ -8,10 +8,12 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { categorie } from "./Redux/Reducers/CategorieReducer";
+import { userRegisterReducer } from "./Redux/Reducers/userRegisteReducer/UserRegisterReducer";
 import { BrowserRouter as Router } from "react-router-dom";
 const rootReducer = combineReducers(
   {
-    categorie
+    categorie :categorie,
+    register: userRegisterReducer,
   }
 )
 

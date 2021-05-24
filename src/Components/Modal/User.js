@@ -1,7 +1,26 @@
+import { useState } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { NewUserRegister } from "../../Redux/Actions/UserRegister/UserRegister";
 import Register from "../Register/Register"
 import Signin from "../Signin/Signin"
 
-const User = () => {
+const User = ({NewUserRegister, register}) => {
+    
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [pwd, setPassword] = useState("");
+
+    const onSent = () =>{
+        const user = {
+            name : name,
+            email : email,
+            pwd: pwd 
+        }
+        console.log(user);
+        NewUserRegister(user);
+    }
+    console.log(register);
     return (
         <>
             <button type="button" class="btn drop-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ float: 'right' }}>
@@ -43,12 +62,14 @@ const User = () => {
                                                 className="form"
                                                 type="text"
                                                 placeholder="name"
+                                                onChange={e =>setName(e.target.value)}
                                             // onChange={onHandle_Email}
                                             />
                                             <input
                                                 className="form"
                                                 type="text"
                                                 placeholder="email"
+                                                onChange={e => setEmail(e.target.value)}
                                             // onChange={onHandle_Email}
                                             />
 
@@ -57,6 +78,7 @@ const User = () => {
                                                 type="password"
                                                 placeholder="password"
                                                 autoComplete="no"
+                                                onChange={e => setPassword(e.target.value)}
                                             // onChange={onHandle_Pwd}
                                             // onKeyDown={userSignin}
                                             />
@@ -65,10 +87,10 @@ const User = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        {/* <button type="button" class="btn btn-success" data-bs-dismiss="modal">walk</button> */}
+                        <button onClick={onSent} type="button" class="btn btn-primary">Save changes</button>
+                        {/* <div class="modal-footer">
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -76,4 +98,14 @@ const User = () => {
     );
 }
 
-export default User;
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        NewUserRegister : bindActionCreators(NewUserRegister, dispatch)
+    }
+}
+const mapStateToProps = (state) =>{
+    return {
+        register : state.register
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(User);
