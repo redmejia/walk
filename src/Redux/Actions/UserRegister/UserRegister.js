@@ -1,10 +1,16 @@
-import { REGSTER } from "../../../Api/Utils/Constants/user"
+import { LOG_OUT, REGSTER } from "../../../Api/Utils/Constants/user"
 import { BASEURL } from "../../../Api/Utils/url"
 
 const userRegisterAction = (user) => {
     return {
         type: REGSTER,
         user
+    }
+}
+
+const logOutAction = () => {
+    return{
+        type : LOG_OUT
     }
 }
 
@@ -18,8 +24,14 @@ export const NewUserRegister = (user) => {
             body: JSON.stringify(user)
         }).then(res => res.json())
             .then(data => { 
-                console.log(">>>>", data);
+                console.log(data);
                 dispatch(userRegisterAction(data)) 
             })
+    }
+}
+
+export const userLogout = () => {
+    return (dispatch) => {
+        dispatch(logOutAction());
     }
 }

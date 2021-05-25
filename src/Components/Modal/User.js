@@ -83,8 +83,8 @@ const User = ({ NewUserRegister, register }) => {
                                 </div>
                             </div>
                         </div>
-                        {/* <button type="button" class="btn btn-success" data-bs-dismiss="modal">walk</button> */}
-                        <button onClick={onSent} type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" onClick={onSent} class="btn btn-success" data-bs-dismiss="modal">walk</button>
+                        {/* <button onClick={onSent} type="button" class="btn btn-primary">Save changes</button> */}
                         {/* <div class="modal-footer">
                         </div> */}
                     </div>
