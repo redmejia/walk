@@ -2,8 +2,8 @@ import { LOG_OUT, REGSTER } from "../../Constants";
 
 const initState = {
     user: {
-        registered: false,
-        user_id: 0,
+        signin: false,
+        user_id: 0
     }
 }
 
