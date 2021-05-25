@@ -2,14 +2,13 @@ import welcome from '../../assets/welcome.jpg'
 const Welcome = () => {
     return (
         <div className="container mt-3">
+            {/* Or carousel */}
             <img src={welcome} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
 
             <h1>
                 add more picture here
             </h1>
-
             <div class="card text-white bg-dark mb-3" >
-                <div class="card-header" style={{ backgroundColor: 'blue' }}></div>
                 <div class="card-body" >
                     <div class="row">
                         <div class="col mt-3">
@@ -31,6 +30,7 @@ const Welcome = () => {
                         </div>
                     </div>
                 </div>
+                <div style={{backgroundColor : 'blue', height : 5}}></div>
             </div>
         </div>
     )

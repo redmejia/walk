@@ -2,22 +2,21 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { NewUserRegister } from "../../Redux/Actions/UserRegister/UserRegister";
-import Register from "../Register/Register"
-import Signin from "../Signin/Signin"
+// import Register from "../Register/Register"
+// import Signin from "../Signin/Signin"
+import './Form.css';
+const User = ({ NewUserRegister, register }) => {
 
-const User = ({NewUserRegister, register}) => {
-    
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [pwd, setPassword] = useState("");
 
-    const onSent = () =>{
+    const onSent = () => {
         const user = {
-            name : name,
-            email : email,
-            pwd: pwd 
+            name: name,
+            email: email,
+            pwd: pwd
         }
-        console.log(user);
         NewUserRegister(user);
     }
     console.log(register);
@@ -42,7 +41,7 @@ const User = ({NewUserRegister, register}) => {
                                                 className="form"
                                                 type="text"
                                                 placeholder="email"
-                                            // onChange={onHandle_Email}
+                                        
                                             />
 
                                             <input
@@ -50,8 +49,7 @@ const User = ({NewUserRegister, register}) => {
                                                 type="password"
                                                 placeholder="password"
                                                 autoComplete="no"
-                                            // onChange={onHandle_Pwd}
-                                            // onKeyDown={userSignin}
+                                          
                                             />
                                         </form>
                                     </div>
@@ -62,15 +60,15 @@ const User = ({NewUserRegister, register}) => {
                                                 className="form"
                                                 type="text"
                                                 placeholder="name"
-                                                onChange={e =>setName(e.target.value)}
-                                            // onChange={onHandle_Email}
+                                                onChange={e => setName(e.target.value)}
+                                         
                                             />
                                             <input
                                                 className="form"
                                                 type="text"
                                                 placeholder="email"
                                                 onChange={e => setEmail(e.target.value)}
-                                            // onChange={onHandle_Email}
+
                                             />
 
                                             <input
@@ -79,8 +77,6 @@ const User = ({NewUserRegister, register}) => {
                                                 placeholder="password"
                                                 autoComplete="no"
                                                 onChange={e => setPassword(e.target.value)}
-                                            // onChange={onHandle_Pwd}
-                                            // onKeyDown={userSignin}
                                             />
                                         </form>
                                     </div>
@@ -98,14 +94,14 @@ const User = ({NewUserRegister, register}) => {
     );
 }
 
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        NewUserRegister : bindActionCreators(NewUserRegister, dispatch)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        NewUserRegister: bindActionCreators(NewUserRegister, dispatch)
     }
 }
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
     return {
-        register : state.register
+        register: state.register
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(User);

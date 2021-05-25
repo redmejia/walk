@@ -18,7 +18,7 @@ export const NewUserRegister = (user) => {
             body: JSON.stringify(user)
         }).then(res => res.json())
             .then(data => { 
-                console.log("herr ", data);
+                console.log(">>>>", data);
                 dispatch(userRegisterAction(data)) 
             })
     }

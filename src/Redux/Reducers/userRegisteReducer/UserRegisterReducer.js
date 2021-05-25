@@ -1,7 +1,10 @@
 import { REGSTER } from "../../../Api/Utils/Constants/user";
 
 const initState = {
-    user:{}
+    user:{
+        registered : false,
+        user_id : 0,
+    }
 }
 
 export const userRegisterReducer = (state = initState.user, action) => {
