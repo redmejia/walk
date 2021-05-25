@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { NewUserRegister } from "../../Redux/Actions/UserRegister/UserRegister";
-// import Register from "../Register/Register"
-// import Signin from "../Signin/Signin"
+import { NewUserRegister } from "../../Redux/Actions/UserRegisterAction";
+import { UserSignin } from "../../Redux/Actions/UserSigninAction";
 import './Form.css';
-const User = ({ NewUserRegister, register }) => {
-
+const User = ({ NewUserRegister, UserSignin }) => {
+    // for register
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [pwd, setPassword] = useState("");
 
-    const onSent = () => {
+    const newUser = () => {
         const user = {
             name: name,
             email: email,
@@ -19,49 +18,54 @@ const User = ({ NewUserRegister, register }) => {
         }
         NewUserRegister(user);
     }
-    console.log(register);
+
+    const newSignin = () => {
+        const user = {
+            email : email,
+            pwd : pwd
+        }
+        console.log(user);
+        UserSignin(user);
+    }
     return (
         <>
-            <button type="button" class="btn drop-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ float: 'right' }}>
+            <button type="button" className="btn drop-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ float: 'right' }}>
                 signin / register
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-xl">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-6">
-                                        Signin
+                        <div className="modal-body">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-6">
                                         <form >
                                             <input
                                                 className="form"
                                                 type="text"
                                                 placeholder="email"
-                                        
-                                            />
+                                                onChange={e => setEmail(e.target.value)}
 
+                                            />
                                             <input
                                                 className="form"
                                                 type="password"
                                                 placeholder="password"
                                                 autoComplete="no"
-                                          
+                                                onChange={e => setPassword(e.target.value)}
                                             />
                                         </form>
                                     </div>
-                                    <div class="col-6">
-                                        Register
+                                    <div className="col-6">
                                         <form >
                                             <input
                                                 className="form"
                                                 type="text"
                                                 placeholder="name"
                                                 onChange={e => setName(e.target.value)}
-                                         
                                             />
                                             <input
                                                 className="form"
@@ -80,13 +84,29 @@ const User = ({ NewUserRegister, register }) => {
                                             />
                                         </form>
                                     </div>
+                                    <div className="col-6">
+                                        <button
+                                            type="button"
+                                            onClick={newSignin}
+                                            className="btn btn-success"
+                                            data-bs-dismiss="modal"
+                                        >
+                                            walk
+                                        </button>
+                                    </div>
+                                    <div className="col-6">
+                                        <button
+                                            type="button"
+                                            onClick={newUser}
+                                            className="btn btn-success"
+                                            data-bs-dismiss="modal"
+                                        >
+                                            create and signin
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="button" onClick={onSent} class="btn btn-success" data-bs-dismiss="modal">walk</button>
-                        {/* <button onClick={onSent} type="button" class="btn btn-primary">Save changes</button> */}
-                        {/* <div class="modal-footer">
-                        </div> */}
                     </div>
                 </div>
             </div>
@@ -96,12 +116,8 @@ const User = ({ NewUserRegister, register }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        NewUserRegister: bindActionCreators(NewUserRegister, dispatch)
+        NewUserRegister: bindActionCreators(NewUserRegister, dispatch),
+        UserSignin : bindActionCreators(UserSignin, dispatch)
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        register: state.register
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(null, mapDispatchToProps)(User);

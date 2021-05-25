@@ -1,5 +1,5 @@
-import { LOG_OUT, REGSTER } from "../../../Api/Utils/Constants/user"
 import { BASEURL } from "../../../Api/Utils/url"
+import { REGSTER, LOG_OUT } from "../../Constants"
 
 const userRegisterAction = (user) => {
     return {
@@ -16,7 +16,7 @@ const logOutAction = () => {
 
 export const NewUserRegister = (user) => {
     return (dispatch) => {
-        return fetch("http://localhost:8080/v1/register", {
+        return fetch(BASEURL+"register", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,6 @@ export const NewUserRegister = (user) => {
             body: JSON.stringify(user)
         }).then(res => res.json())
             .then(data => { 
-                console.log(data);
                 dispatch(userRegisterAction(data)) 
             })
     }

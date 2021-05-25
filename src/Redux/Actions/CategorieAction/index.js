@@ -8,6 +8,7 @@ const loadCategorieAction = (categorie) => {
         categorie
     }
 }
+
 export const loadCategorie = (categorie) => {
     return (dispatch) => {
         return fetch(BASEURL+CATEGORIE+"?cat="+categorie)

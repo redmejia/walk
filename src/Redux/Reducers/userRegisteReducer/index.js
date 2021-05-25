@@ -1,9 +1,9 @@
-import { LOG_OUT, REGSTER } from "../../../Api/Utils/Constants/user";
+import { LOG_OUT, REGSTER } from "../../Constants";
 
 const initState = {
-    user:{
-        registered : false,
-        user_id : 0,
+    user: {
+        registered: false,
+        user_id: 0,
     }
 }
 
@@ -13,8 +13,8 @@ export const userRegisterReducer = (state = initState.user, action) => {
             return action.user
         case LOG_OUT:
             return {
-                registered : false,
-                user_id : 0
+                registered: false,
+                user_id: 0
             }
         default:
             return state;

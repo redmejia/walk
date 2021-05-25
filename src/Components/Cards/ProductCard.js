@@ -9,7 +9,7 @@ const ProductCard = ({ data }) => {
                 <div className="row row-cols-4 mt-5">
                     {data.map(d => {
                         return (
-                            <div className="col">
+                            <div className="col" key={d.pro_id}>
                                 <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
                                 <div>
                                     <h2 style={{ color: 'blue' }}>{d.name}</h2>

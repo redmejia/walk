@@ -8,15 +8,15 @@ const Welcome = () => {
             <h1>
                 add more picture here
             </h1>
-            <div class="card text-white bg-dark mb-3" >
-                <div class="card-body" >
-                    <div class="row">
-                        <div class="col mt-3">
+            <div className="card text-white bg-dark mb-3" >
+                <div className="card-body" >
+                    <div className="row">
+                        <div className="col mt-3">
                             <h4>Contact</h4>
                             <p>Phone: (123) 123-1234</p>
                             <p>Email: example@mail.com</p>
                         </div>
-                        <div class="col mt-3">
+                        <div className="col mt-3">
                             <h4>About</h4>
                             <p><a href="#">About us</a></p>
                             <p><a href="#">We're hiring</a></p>
