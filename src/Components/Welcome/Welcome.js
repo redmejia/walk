@@ -30,7 +30,7 @@ const Welcome = () => {
                         </div>
                     </div>
                 </div>
-                <div style={{backgroundColor : 'blue', height : 5}}></div>
+                <div style={{backgroundColor : 'blue', height: 10}}></div>
             </div>
         </div>
     )

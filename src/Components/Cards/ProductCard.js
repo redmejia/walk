@@ -1,25 +1,35 @@
 import './Cards.css'
 import logo from '../../assets/zapato.jpg'
 import Scroll from '../Scroll/Scroll'
+import { useState } from 'react'
+import Product from '../Product/Product';
 const ProductCard = ({ data }) => {
+    const [product, setIsSelect] = useState({ isSelect: false, pro_id: 0 });
     return (
         <>
             <div className="container">
                 {/* <Scroll>  not yet */}
-                <div className="row row-cols-4 mt-5">
-                    {data.map(d => {
-                        return (
-                            <div className="col" key={d.pro_id}>
-                                <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
-                                <div>
-                                    <h2 style={{ color: 'blue' }}>{d.name}</h2>
-                                    <p style={{ fontWeight: 'bold' }}>{d.color}</p>
-                                    <p>$ {d.price}</p>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
+                {
+                    product.isSelect ? <Product pro_id={product.pro_id} /> :
+
+                        <div className="row row-cols-4 mt-5">
+                            {data.map(d => {
+                                return (
+                                    <div className="col-3" key={d.pro_id} onClick={() => setIsSelect({ isSelect: true, pro_id: d.pro_id })}>
+                                        <a>
+                                            <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
+                                        </a>
+                                        <div>
+                                            <h2 style={{ color: 'blue' }}>{d.pro_name}</h2>
+                                            <p style={{ fontWeight: 'bold' }}>{d.color}</p>
+                                            <p>id {d.product_id}</p>
+                                            <p>$ {d.price}</p>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                }
                 {/* </Scroll> */}
             </div>
         </>

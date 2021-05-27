@@ -4,6 +4,7 @@ import Welcome from './Components/Welcome/Welcome';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ProductNav from './Components/ProductNav/ProductNav';
 import GoHome from './Components/GoHome/GoHome';
+import Product from './Components/Product/Product';
 
 
 
@@ -22,7 +23,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-        </>
+    </>
   );
 }
 
