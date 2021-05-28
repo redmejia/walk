@@ -15,7 +15,7 @@ const ProductCard = ({ data }) => {
                         <div className="row row-cols-4 mt-5">
                             {data.map(d => {
                                 return (
-                                    <div className="col-3" key={d.pro_id} onClick={() => setIsSelect({ isSelect: true, pro_id: d.pro_id })}>
+                                    <div className="col-3" key={d.pro_id} onClick={() => setIsSelect({ isSelect: true, pro_id: d.product_id })}>
                                         <a>
                                             <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
                                         </a>
