@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Cart from "../Cart/Cart";
 const ProductNav = ({ item }) => {
     return (
         <div className="container mt-3">
@@ -36,7 +37,10 @@ const ProductNav = ({ item }) => {
             </div>
             {
                 item.length === 0 ? "" :
-                    <button className="btn-primary" style={{ float: 'right' }}>my cart</button>
+                    <div style={{float : 'right'}}>
+                        <Cart />
+                    </div>
+                // <button className="btn-primary" style={{ float: 'right' }}>my cart</button>
             }
         </div>
     );

@@ -9,7 +9,9 @@ const initState = {
         price: 0
     }]
 }
-
+// const initState = {
+//     product: []
+// }
 export const productReducer = (state = initState.product, action) => {
     switch (action.type) {
         case LOAD_PRODUCT:
