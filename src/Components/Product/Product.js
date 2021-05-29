@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { loadProduct } from "../../Redux/Actions/ProductAction";
+import { addItem } from "../../Redux/Actions/Cart";
 
-const Product = ({ loadProduct, product, pro_id }) => {
+const Product = ({ loadProduct, product, pro_id, addItem }) => {
     useEffect(() => {
         loadProduct(pro_id)
     }, [loadProduct, pro_id])
+    const addNewItem = () => {
+        addItem(product)
+    }
     return (
-
         <div className="container">
             {product.map(p => {
                 return (
@@ -19,6 +22,7 @@ const Product = ({ loadProduct, product, pro_id }) => {
                     </div>
                 )
             })}
+            <button className="btn-primary" onClick={addNewItem}>add to cart</button>
         </div>
     );
 }
@@ -28,6 +32,7 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    loadProduct
+    loadProduct,
+    addItem,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

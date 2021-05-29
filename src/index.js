@@ -11,6 +11,7 @@ import { categorie } from "./Redux/Reducers/CategorieReducer";
 import { userRegisterReducer } from "./Redux/Reducers/userRegisteReducer";
 import { userSigninReducer } from "./Redux/Reducers/UserSiginReducer";
 import { productReducer } from "./Redux/Reducers/ProductReducer";
+import { newItemReducer } from "./Redux/Reducers/Cart";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const rootReducer = combineReducers(
@@ -18,7 +19,8 @@ const rootReducer = combineReducers(
     register: userRegisterReducer,
     signin : userSigninReducer,
     categorie :categorie,
-    product : productReducer
+    product : productReducer,
+    cart : newItemReducer,
   }
 )
 

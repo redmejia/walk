@@ -1,5 +1,6 @@
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-const ProductNav = () => {
+const ProductNav = ({ item }) => {
     return (
         <div className="container mt-3">
             <div className="btn-group" role="group" aria-label="Basic example">
@@ -33,8 +34,16 @@ const ProductNav = () => {
                     </ul>
                 </div>
             </div>
+            {
+                item.length === 0 ? "" :
+                    <button className="btn-primary" style={{ float: 'right' }}>my cart</button>
+            }
         </div>
     );
 }
-
-export default ProductNav;
+const mapStateToProps = (state) => {
+    return {
+        item: state.cart
+    }
+}
+export default connect(mapStateToProps, null)(ProductNav);

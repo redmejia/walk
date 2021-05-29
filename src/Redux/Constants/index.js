@@ -10,3 +10,6 @@ export const LOAD_CAT = "LOAD_CAT"
 
 // for load product by product id or SKU
 export const LOAD_PRODUCT = "LOAD_PRODUCT";
+
+// for adding item to cart 
+export const NEW_ITEM = "NEW_ITEM";
