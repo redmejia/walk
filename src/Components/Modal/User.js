@@ -43,6 +43,7 @@ const User = ({ NewUserRegister, UserSignin }) => {
                                 <div className="row">
                                     <div className="col-6">
                                         <form >
+                                            {/* signin */}
                                             <input
                                                 className="form"
                                                 type="text"
@@ -59,6 +60,7 @@ const User = ({ NewUserRegister, UserSignin }) => {
                                             />
                                         </form>
                                     </div>
+                                    {/* register */}
                                     <div className="col-6">
                                         <form >
                                             <input
