@@ -1,6 +1,8 @@
 import { connect } from "react-redux"
+import { cancelOrder } from "../../Redux/Actions/Cart";
 
-const Cart = ({ item, user }) => {
+const Cart = ({ item, user , cancelOrder }) => {
+
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -11,7 +13,7 @@ const Cart = ({ item, user }) => {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        <span class="badge rounded-pill bg-info text-dark" style={{float : "right"}}>You have {item.count} item</span>
+                            <span class="badge rounded-pill bg-info text-dark" style={{ float: "right" }}>You have {item.count} item</span>
 
                             {
                                 item.items.map(i => {
@@ -29,7 +31,7 @@ const Cart = ({ item, user }) => {
                             }
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancel order</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick={cancelOrder}>cancel order</button>
                             <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Check Out</button>
                         </div>
                     </div>
@@ -181,4 +183,7 @@ const mapStateToProps = (state) => {
         user: user
     }
 }
-export default connect(mapStateToProps, null)(Cart);
+const mapDispatchToProps = {
+    cancelOrder
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

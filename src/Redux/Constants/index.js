@@ -13,3 +13,5 @@ export const LOAD_PRODUCT = "LOAD_PRODUCT";
 
 // for adding item to cart 
 export const NEW_ITEM = "NEW_ITEM";
+// for canceling order 
+export const CANCE_ORDER = "CANCE_ORDER";
