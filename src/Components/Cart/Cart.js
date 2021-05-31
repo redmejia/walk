@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 
-const Cart = ({ item }) => {
+const Cart = ({ item, user }) => {
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -11,14 +11,16 @@ const Cart = ({ item }) => {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                        <span class="badge rounded-pill bg-info text-dark" style={{float : "right"}}>You have {item.count} item</span>
+
                             {
-                                item.map(i => {
+                                item.items.map(i => {
                                     return (
                                         <div>
-                                            <h6>{i[0].pro_name}</h6>
-                                            <h6>{i[0].color}</h6>
-                                            <h6>{i[0].size}</h6>
-                                            <h6>{i[0].price}</h6>
+                                            <h6>{i.pro_name}</h6>
+                                            <h6>{i.color}</h6>
+                                            <h6>{i.size}</h6>
+                                            <h6>{i.price}</h6>
                                             <hr></hr>
                                         </div>
 
@@ -144,20 +146,39 @@ const Cart = ({ item }) => {
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">proceed</button>
+                            {
+                                user.signin ?
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">proceed</button>
+                                    : <button type="button" class="btn btn-outline-warning">
+                                        Please signin or register
+                                    </button>
+                            }
                             <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Go Back</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* will open firs modal  */}
-            <a class="btn btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">My Cart</a>
+            <a class="btn btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+                {item.count} My Cart
+            </a>
         </div>
     )
 }
 const mapStateToProps = (state) => {
+    let user = {
+        signin: false,
+        user_id: 0
+    };
+    if (state.register.signin) {
+        user = { ...state.register };
+    } else if (state.signin.signin) {
+        user = { ...state.signin };
+    }
+
     return {
-        item: state.cart
+        item: state.cart,
+        user: user
     }
 }
 export default connect(mapStateToProps, null)(Cart);

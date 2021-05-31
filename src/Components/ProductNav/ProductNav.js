@@ -36,7 +36,7 @@ const ProductNav = ({ item }) => {
                 </div>
             </div>
             {
-                item.length === 0 ? "" :
+                item.items.length === 0 ? "" :
                     <div style={{float : 'right'}}>
                         <Cart />
                     </div>

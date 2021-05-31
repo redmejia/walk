@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { loadProduct } from "../../Redux/Actions/ProductAction";
 import { addItem } from "../../Redux/Actions/Cart";
@@ -8,7 +8,7 @@ const Product = ({ loadProduct, product, pro_id, addItem }) => {
         loadProduct(pro_id)
     }, [loadProduct, pro_id])
     const addNewItem = () => {
-        addItem(product)
+        addItem(product[0])
     }
     return (
         <div className="container">
