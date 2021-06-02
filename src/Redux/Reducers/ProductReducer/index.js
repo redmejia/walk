@@ -1,13 +1,14 @@
 import { LOAD_PRODUCT } from "../../Constants";
 
 const initState = {
-    product: [{
+    product: {
         product_id: 0,
         pro_name: "",
         color: "",
-        size: "",
-        price: 0
-    }]
+        price: 0,
+        sizes : [],
+        colors : []
+    }
 }
 // const initState = {
 //     product: []

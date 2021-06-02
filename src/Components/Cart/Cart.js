@@ -2,7 +2,6 @@ import { connect } from "react-redux"
 import { cancelOrder } from "../../Redux/Actions/Cart";
 
 const Cart = ({ item, user , cancelOrder }) => {
-
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -14,15 +13,14 @@ const Cart = ({ item, user , cancelOrder }) => {
                         </div>
                         <div class="modal-body">
                             <span class="badge rounded-pill bg-info text-dark" style={{ float: "right" }}>You have {item.count} item</span>
-
                             {
                                 item.items.map(i => {
                                     return (
                                         <div>
                                             <h6>{i.pro_name}</h6>
-                                            <h6>{i.color}</h6>
-                                            <h6>{i.size}</h6>
                                             <h6>{i.price}</h6>
+                                            <h6>{i.size}</h6>
+                                            <h6>{i.color}</h6>
                                             <hr></hr>
                                         </div>
 

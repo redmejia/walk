@@ -13,16 +13,18 @@ const ProductCard = ({ data }) => {
                     product.isSelect ? <Product pro_id={product.pro_id} /> :
 
                         <div className="row row-cols-4 mt-5">
-                            {data.map(d => {
+                            {data.map((d) => {
                                 return (
-                                    <div className="col-3" key={d.pro_id} onClick={() => setIsSelect({ isSelect: true, pro_id: d.product_id })}>
+                                    <div className="col-3" key={d.product_id} onClick={() => setIsSelect({ isSelect: true, pro_id: d.product_id })}>
                                         <a>
                                             <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
                                         </a>
-                                        <div>
+                                        <div >
                                             <h2 style={{ color: 'blue' }}>{d.pro_name}</h2>
                                             <p style={{ fontWeight: 'bold' }}>{d.color}</p>
                                             <p>$ {d.price}</p>
+                                            <p>{d.size}</p>
+                                            <p>{d.product_id}</p>
                                         </div>
                                     </div>
                                 );
