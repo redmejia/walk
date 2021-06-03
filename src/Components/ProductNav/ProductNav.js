@@ -1,9 +1,8 @@
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
-const ProductNav = ({ item }) => {
+const ProductNav = () => {
     return (
-        <div className="container mt-3">
+        <div className="container mt-4">
             <div className="btn-group" role="group" aria-label="Basic example">
                 <div className="dropdown">
                     <button
@@ -35,19 +34,10 @@ const ProductNav = ({ item }) => {
                     </ul>
                 </div>
             </div>
-            {
-                item.items.length === 0 ? "" :
-                    <div style={{float : 'right'}}>
-                        <Cart />
-                    </div>
-                // <button className="btn-primary" style={{ float: 'right' }}>my cart</button>
-            }
+            <div style={{ float: 'right' }}>
+                <Cart />
+            </div>
         </div>
     );
 }
-const mapStateToProps = (state) => {
-    return {
-        item: state.cart
-    }
-}
-export default connect(mapStateToProps, null)(ProductNav);
+export default ProductNav;

@@ -38,10 +38,8 @@ const Product = ({ loadProduct, product, pro_id, addItem }) => {
         <div className="container">
             {
                 <div>
-                    <h1>{product.pro_name}</h1>
-                    <h1>{product.price}</h1>
                     {
-                        <div class="btn-group-vertical" key={product.pro_name}>
+                        <div class="btn-group-vertical my-4" key={product.pro_name} style={{ float: 'right' }}>
                             <h5>Size</h5>
                             {
                                 productSizeOpt(product.sizes)
@@ -50,11 +48,13 @@ const Product = ({ loadProduct, product, pro_id, addItem }) => {
                             {
                                 productColorOpt(product.colors)
                             }
+                            <button className="btn-primary my-3 " onClick={addNewItem}>add to cart</button>
                         </div>
                     }
+                    <h1>{product.pro_name}</h1>
+                    <h1>{product.price}</h1>
                 </div>
             }
-            <button className="btn-primary my-3 " onClick={addNewItem}>add to cart</button>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import { cancelOrder } from "../../Redux/Actions/Cart";
 
-const Cart = ({ item, user , cancelOrder }) => {
+const Cart = ({ item, user, cancelOrder }) => {
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -159,9 +159,15 @@ const Cart = ({ item, user , cancelOrder }) => {
                 </div>
             </div>
             {/* will open firs modal  */}
-            <a class="btn btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
-                {item.count} My Cart
-            </a>
+            {
+                item.count === 0 ?
+                    <a class="btn btn-outline-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+                        My Cart
+                </a> :
+                    <a class="btn btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+                      {item.count} ITEM IN MY CART 
+                </a>
+            }
         </div>
     )
 }
@@ -178,7 +184,7 @@ const mapStateToProps = (state) => {
 
     return {
         item: state.cart,
-        user: user
+        user: user,
     }
 }
 const mapDispatchToProps = {
