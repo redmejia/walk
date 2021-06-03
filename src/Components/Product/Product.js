@@ -13,7 +13,7 @@ const Product = ({ loadProduct, product, pro_id, addItem }) => {
         return (
             lists.map((s) => {
                 return (
-                    <button type="button" class="btn btn-primary" onClick={() => setSize(s)} key={s}>{s}</button>
+                    <button type="button" className="btn btn-outline-success" onClick={() => setSize(s)} key={s}>{s}</button>
                 );
             })
         )
@@ -23,7 +23,7 @@ const Product = ({ loadProduct, product, pro_id, addItem }) => {
         return (
             lists.map((c) => {
                 return (
-                    <button type="button" class="btn btn-primary" onClick={() => setColor(c)} key={c}>{c}</button>
+                    <button type="button" className="btn btn-outline-success" onClick={() => setColor(c)} key={c}>{c}</button>
                 );
             })
         )

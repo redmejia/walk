@@ -23,8 +23,6 @@ const ProductCard = ({ data }) => {
                                             <h2 style={{ color: 'blue' }}>{d.pro_name}</h2>
                                             <p style={{ fontWeight: 'bold' }}>{d.color}</p>
                                             <p>$ {d.price}</p>
-                                            <p>{d.size}</p>
-                                            <p>{d.product_id}</p>
                                         </div>
                                     </div>
                                 );
