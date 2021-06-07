@@ -7,7 +7,8 @@ const initState = {
         color: "",
         price: 0,
         sizes : [],
-        colors : []
+        colors : [],
+        image : []
     }
 }
 // const initState = {

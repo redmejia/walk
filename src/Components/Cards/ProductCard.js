@@ -17,7 +17,7 @@ const ProductCard = ({ data }) => {
                                 return (
                                     <div className="col-3" key={d.product_id} onClick={() => setIsSelect({ isSelect: true, pro_id: d.product_id })}>
                                         <a>
-                                            <img src={logo} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
+                                            <img src={d.product_img} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
                                         </a>
                                         <div >
                                             <h2 style={{ color: 'blue' }}>{d.pro_name}</h2>
