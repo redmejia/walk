@@ -57,7 +57,7 @@ const Product = ({ loadProduct, product, pro_id, addItem }) => {
         addItem(order)
     }
     return (
-        <div className="container m-3">
+        <div className="container my-3">
             <div class="row">
                 <div class="col-8">
                     <h1>{product.pro_name}</h1>
@@ -77,7 +77,7 @@ const Product = ({ loadProduct, product, pro_id, addItem }) => {
                                     {
                                         productColorOpt(product.colors)
                                     }
-                                    <button className="btn-primary my-3 " onClick={addNewItem}>add to cart</button>
+                                    <button className="btn-primary m-3 " onClick={addNewItem}>add to cart</button>
                                 </div>
                             }
                         </div>

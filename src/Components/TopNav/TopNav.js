@@ -3,8 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { userLogout } from "../../Redux/Actions/UserRegisterAction";
 import User from "../Modal/User";
-// CHANGE THE NAME
-const GoHome = ({ userLogout, user }) => {
+
+const TopNav = ({ userLogout, user }) => {
     let history = useHistory()
     const logOUT = () => {
         history.push("/")
@@ -12,7 +12,6 @@ const GoHome = ({ userLogout, user }) => {
     }
     return (
         <div className="container mt-3">
-            {/* create link to signin and register */}
             <Link to="/">Logo</Link>
             {
                 user.signin ?
@@ -47,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
         userLogout: bindActionCreators(userLogout, dispatch)
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(GoHome);
+export default connect(mapStateToProps, mapDispatchToProps)(TopNav);
