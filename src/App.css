@@ -12,7 +12,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+/* btns for top nav and product nav*/
+.drop-btn{
+    background-color: white;
+    border: white;
+    border: solid white 2px;
+    border-bottom-color: blue;
+}
 /* .App-header {
   background-color: #282c34;
   min-height: 100vh;

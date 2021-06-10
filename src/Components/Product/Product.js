@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { loadProduct } from "../../Redux/Actions/ProductAction";
 import { addItem } from "../../Redux/Actions/Cart";
+import { useParams } from "react-router-dom";
 const imagesCouresel = (imagesList) => {
     return (
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -25,11 +26,11 @@ const imagesCouresel = (imagesList) => {
     )
 }
 
-const Product = ({ loadProduct, product, pro_id, addItem }) => {
+const Product = ({ loadProduct, product, addItem }) => {
+    let { id } = useParams()
     useEffect(() => {
-        loadProduct(pro_id)
-    }, [loadProduct, pro_id])
-
+        loadProduct(id)
+    }, [loadProduct, id])
     const [color, setColor] = useState("");
     const [size, setSize] = useState("");
     const productSizeOpt = (lists) => {
