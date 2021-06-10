@@ -2,6 +2,7 @@ import { connect } from "react-redux"
 import { cancelOrder } from "../../Redux/Actions/Cart";
 
 const Cart = ({ item, user, cancelOrder }) => {
+    console.log(item);
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -16,12 +17,21 @@ const Cart = ({ item, user, cancelOrder }) => {
                             {
                                 item.items.map(i => {
                                     return (
-                                        <div>
-                                            <h6>{i.pro_name}</h6>
-                                            <h6>{i.price}</h6>
-                                            <h6>{i.size}</h6>
-                                            <h6>{i.color}</h6>
-                                            <hr></hr>
+                                        <div className="container">
+                                            <img src={i.img} alt="producto" style={{ width: 200, height: 100 }}></img>
+                                            <div class="row">
+                                                <div className="col">
+                                                    <h6>{i.pro_name}</h6>
+                                                    <h6>{i.price}</h6>
+                                                    <h6>{i.size}</h6>
+                                                    <h6>{i.color}</h6>
+                                                    <hr></hr>
+                                                </div>
+                                                <div class="col" style={{ float: 'right' }}>
+                                                    <button className="btn btn-danger">delete</button>
+                                                    {/* <button className="btn btn-warning">delete</button> */}
+                                                </div>
+                                            </div>
                                         </div>
 
                                     );
@@ -165,7 +175,7 @@ const Cart = ({ item, user, cancelOrder }) => {
                         My Cart
                 </a> :
                     <a class="btn btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
-                      {item.count} ITEM IN MY CART 
+                        {item.count} ITEM IN MY CART
                 </a>
             }
         </div>

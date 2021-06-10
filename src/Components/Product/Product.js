@@ -27,6 +27,7 @@ const imagesCouresel = (imagesList) => {
 }
 
 const Product = ({ loadProduct, product, addItem }) => {
+    // let { id, name } = useParams() name no need yet
     let { id } = useParams()
     useEffect(() => {
         loadProduct(id)
@@ -42,6 +43,7 @@ const Product = ({ loadProduct, product, addItem }) => {
             })
         )
     }
+
     const productColorOpt = (lists) => {
         return (
             lists.map((c) => {
@@ -51,12 +53,11 @@ const Product = ({ loadProduct, product, addItem }) => {
             })
         )
     }
-
-    let order = { pro_name: product.pro_name, color, size: size, price: product.price }
-
+    let order = { id: product.product_id, pro_name: product.pro_name, color, size: size, price: product.price, img: product.image[0] }
     const addNewItem = () => {
         addItem(order)
     }
+
     return (
         <div className="container my-3">
             <div class="row">
@@ -88,6 +89,7 @@ const Product = ({ loadProduct, product, addItem }) => {
         </div>
     );
 }
+
 const mapStateToProps = (state) => {
     return {
         product: state.product
