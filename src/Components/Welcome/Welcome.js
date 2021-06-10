@@ -1,12 +1,14 @@
 import welcome from '../../assets/welcome.jpg'
+import MensBoots from '../Categories/Mens/MensBoots'
+import Sport from '../Categories/Mens/Sport'
+import Promos from '../Promos/Promos'
 const Welcome = () => {
     return (
         <div>
             <div className="container mt-3">
                 <img className="my-3" src={welcome} alt="Avatar" style={{ width: '100%', height: 460 }}></img>
-                <h1>
-                    add more picture here
-            </h1>
+                <h1 style={{color : 'blue'}}>Get Today "discount here" % off</h1>
+                <Promos />
                 <div className="card text-white bg-dark mb-3" >
                     <div className="card-body" >
                         <div className="row">

@@ -2,7 +2,6 @@ import { connect } from "react-redux"
 import { cancelOrder } from "../../Redux/Actions/Cart";
 
 const Cart = ({ item, user, cancelOrder }) => {
-    console.log(item);
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">

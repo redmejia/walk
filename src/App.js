@@ -17,15 +17,16 @@ const App = () => {
         <TopNav />
         <ProductNav />
         <Switch>
-          <Route exact path="/">
-            <Welcome />
-          </Route >
+          <Route exact path="/" component={Welcome} />
+
           {/* Womens categorie */}
           <Route path="/womens/boots" component={WomensBoots} />
           <Route path="/heels" component={Heels} />
+
           {/* Mens categorie */}
           <Route path="/mens/boots" component={MensBoots} />
           <Route path="/sport" component={Sport} />
+
           <Route path="/product/pro-name/:name/pro-id/:id" component={Product} />
         </Switch>
       </Router>
