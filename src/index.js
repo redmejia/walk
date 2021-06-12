@@ -12,7 +12,7 @@ import { userRegisterReducer } from "./Redux/Reducers/userRegisteReducer";
 import { userSigninReducer } from "./Redux/Reducers/UserSiginReducer";
 import { productReducer } from "./Redux/Reducers/ProductReducer";
 import { newItemReducer } from "./Redux/Reducers/Cart";
-import { promotionReducer } from "./Redux/Reducers/PromosReducer";
+import { promotionByIdReducer, promotionReducer } from "./Redux/Reducers/PromosReducer";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const rootReducer = combineReducers(
@@ -23,6 +23,7 @@ const rootReducer = combineReducers(
     product : productReducer,
     cart : newItemReducer,
     promos : promotionReducer,
+    promo : promotionByIdReducer,
   }
 )
 

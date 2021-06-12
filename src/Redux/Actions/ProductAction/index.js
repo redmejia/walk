@@ -1,9 +1,9 @@
 import { BASEURL } from "../../../Api/Utils/url"
-import { LOAD_PRODUCT } from "../../Constants"
+import { LOAD_PRODUCT_BY_ID } from "../../Constants"
 
 const loadProductAction = (product) => {
     return {
-        type: LOAD_PRODUCT,
+        type: LOAD_PRODUCT_BY_ID,
         product
     }
 }

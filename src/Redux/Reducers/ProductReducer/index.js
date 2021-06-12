@@ -1,4 +1,4 @@
-import { LOAD_PRODUCT } from "../../Constants";
+import { LOAD_PRODUCT_BY_ID } from "../../Constants";
 
 const initState = {
     product: {
@@ -11,12 +11,10 @@ const initState = {
         image : []
     }
 }
-// const initState = {
-//     product: []
-// }
+
 export const productReducer = (state = initState.product, action) => {
     switch (action.type) {
-        case LOAD_PRODUCT:
+        case LOAD_PRODUCT_BY_ID:
             return action.product;        
         default:
             return state

@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { loadPromotion } from "../../Redux/Actions/PromosAction";
-import ProductCard from "../Cards/ProductCard";
+import PromoCard from "../Cards/PromoCard";
 
 const Promos = ({loadPromotion, promo}) => {
 	useEffect(()=>{
 		loadPromotion()
 	},[loadPromotion])
 	return (
-		<ProductCard data={promo} />
+		<PromoCard data={promo} />
 	);
 }
 

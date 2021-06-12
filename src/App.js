@@ -9,6 +9,7 @@ import WomensBoots from './Components/Categories/Womens/WomensBoots'
 import Heels from './Components/Categories/Womens/Heels';
 import MensBoots from './Components/Categories/Mens/MensBoots';
 import Sport from './Components/Categories/Mens/Sport';
+import Promo from './Components/Promos/Promo';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/sport" component={Sport} />
 
           <Route path="/product/pro-name/:name/pro-id/:id" component={Product} />
+          <Route path="/promotion/pro-name/:name/pro-id/:id" component={Promo} />
         </Switch>
       </Router>
     </>
