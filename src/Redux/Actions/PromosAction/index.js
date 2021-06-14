@@ -9,7 +9,7 @@ const loadPromoAction = (promo) => {
 
 export const loadPromotion = () => {
 	return (dispatch) => {
-		return fetch(BASEURL + "promos")
+		return fetch(BASEURL + "promo?products=true")
 			.then(res => res.json())
 			.then(data => dispatch(loadPromoAction(data)))
 	}

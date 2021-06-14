@@ -1,14 +1,14 @@
 import { connect } from "react-redux"
-import { cancelOrder } from "../../Redux/Actions/Cart";
+import { cancelOrder, deleteItem } from "../../Redux/Actions/Cart";
 
-const Cart = ({ item, user, cancelOrder }) => {
+const Cart = ({ item, user, cancelOrder, deleteItem }) => {
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                            {/* <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5> */}
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -20,6 +20,7 @@ const Cart = ({ item, user, cancelOrder }) => {
                                             <img src={i.img} alt="producto" style={{ width: 200, height: 100 }}></img>
                                             <div class="row">
                                                 <div className="col">
+                                                    <h6>{i.id}</h6>
                                                     <h6>{i.pro_name}</h6>
                                                     <h6>{i.price}</h6>
                                                     <h6>{i.size}</h6>
@@ -27,7 +28,7 @@ const Cart = ({ item, user, cancelOrder }) => {
                                                     <hr></hr>
                                                 </div>
                                                 <div class="col" style={{ float: 'right' }}>
-                                                    <button className="btn btn-danger">delete</button>
+                                                    <button className="btn btn-danger" onClick={()=> deleteItem(i.id)}>delete</button>
                                                     {/* <button className="btn btn-warning">delete</button> */}
                                                 </div>
                                             </div>
@@ -48,7 +49,7 @@ const Cart = ({ item, user, cancelOrder }) => {
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+                            {/* <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5> */}
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -197,6 +198,7 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    cancelOrder
+    cancelOrder,
+    deleteItem,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

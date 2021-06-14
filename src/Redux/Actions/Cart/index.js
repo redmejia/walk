@@ -1,4 +1,4 @@
-import { CANCE_ORDER, NEW_ITEM } from "../../Constants"
+import { CANCEL_ORDER, DELETE_ITEM, NEW_ITEM } from "../../Constants"
 
 const newItemAction = (item) =>{
     return {
@@ -16,12 +16,25 @@ export const addItem = (item) => {
 
 const cancelOrderAction = () => {
     return {
-        type : CANCE_ORDER 
+        type : CANCEL_ORDER 
     }
 }
 
 export const cancelOrder = () => {
     return (dispatch) =>{
         dispatch(cancelOrderAction())
+    }
+}
+
+const deleteItemAction = (item) => {
+    return{
+        type: DELETE_ITEM,
+        item
+    }
+}
+
+export const deleteItem =(item) =>{
+    return(dispatch)=>{
+        dispatch(deleteItemAction(item))
     }
 }

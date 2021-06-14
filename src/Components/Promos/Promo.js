@@ -28,7 +28,6 @@ const imagesCouresel = (imagesList) => {
 
 const Promo = ({ loadPromotionById, promo, addItem }) => {
     // let { id, name } = useParams() name no need yet
-    console.log(promo);
     let { id } = useParams()
     useEffect(() => {
         loadPromotionById(id)
