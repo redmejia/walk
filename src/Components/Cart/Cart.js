@@ -18,19 +18,30 @@ const Cart = ({ item, user, cancelOrder, deleteItem }) => {
                                     return (
                                         <div className="container">
                                             <img src={i.img} alt="producto" style={{ width: 200, height: 100 }}></img>
-                                            <div class="row">
-                                                <div className="col">
+                                            <div class="row justify-content-center">
+                                                <div className="col-8">
                                                     <h6>{i.id}</h6>
                                                     <h6>{i.pro_name}</h6>
                                                     <h6>{i.price}</h6>
                                                     <h6>{i.size}</h6>
                                                     <h6>{i.color}</h6>
+                                                    <div>
+                                                        <span class="badge rounded-pill bg-info text-dark" >You have item</span>
+                                                    </div>
+                                                    <div>
+                                                        <h5>qty</h5>
+                                                        <button class="btn btn-outline-primary">-</button>
+                                                        <input type="text" style={{ width: 40 }} />
+                                                        <button class="btn btn-outline-primary">+</button>
+                                                    </div>
                                                     <hr></hr>
                                                 </div>
-                                                <div class="col" style={{ float: 'right' }}>
-                                                    <button className="btn btn-danger" onClick={()=> deleteItem(i.id)}>delete</button>
-                                                    {/* <button className="btn btn-warning">delete</button> */}
+                                                <div class="col-4" >
+                                                    <button className="btn btn-danger" onClick={() => deleteItem(i.id)}>delete</button>
                                                 </div>
+                                                {/* <div class="col-4" style={{ float: 'right' }}>
+                                                    <button className="btn btn-danger" onClick={() => deleteItem(i.id)}>delete</button>
+                                                </div> */}
                                             </div>
                                         </div>
 
@@ -173,10 +184,10 @@ const Cart = ({ item, user, cancelOrder, deleteItem }) => {
                 item.count === 0 ?
                     <a class="btn btn-outline-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
                         My Cart
-                </a> :
+                    </a> :
                     <a class="btn btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
                         {item.count} ITEM IN MY CART
-                </a>
+                    </a>
             }
         </div>
     )
