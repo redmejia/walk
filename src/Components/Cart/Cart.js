@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
-import { cancelOrder, deleteItem } from "../../Redux/Actions/Cart";
+import { cancelOrder, deleteItem, incrementQty, decrementQty } from "../../Redux/Actions/Cart";
 
-const Cart = ({ item, user, cancelOrder, deleteItem }) => {
+const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty }) => {
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -26,22 +26,24 @@ const Cart = ({ item, user, cancelOrder, deleteItem }) => {
                                                     <h6>{i.size}</h6>
                                                     <h6>{i.color}</h6>
                                                     <div>
-                                                        <span class="badge rounded-pill bg-info text-dark" >You have item</span>
+                                                        <span class="badge rounded-pill bg-info text-dark" >qty {i.qty} </span>
+                                                        <h5>New total {i.price * i.qty}</h5>
                                                     </div>
                                                     <div>
                                                         <h5>qty</h5>
-                                                        <button class="btn btn-outline-primary">-</button>
-                                                        <input type="text" style={{ width: 40 }} />
-                                                        <button class="btn btn-outline-primary">+</button>
+                                                        {i.qty === 1 ?
+
+                                                            <button class="btn btn-outline-primary" disabled>-</button>
+                                                            :
+                                                            <button class="btn btn-outline-primary" onClick={() => decrementQty(i.id)}>-</button>
+                                                        }
+                                                        <button class="btn btn-outline-primary" onClick={() => incrementQty(i.id)}>+</button>
                                                     </div>
                                                     <hr></hr>
                                                 </div>
                                                 <div class="col-4" >
                                                     <button className="btn btn-danger" onClick={() => deleteItem(i.id)}>delete</button>
                                                 </div>
-                                                {/* <div class="col-4" style={{ float: 'right' }}>
-                                                    <button className="btn btn-danger" onClick={() => deleteItem(i.id)}>delete</button>
-                                                </div> */}
                                             </div>
                                         </div>
 
@@ -211,5 +213,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     cancelOrder,
     deleteItem,
+    incrementQty,
+    decrementQty,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -53,7 +53,7 @@ const Product = ({ loadProduct, product, addItem }) => {
             })
         )
     }
-    let order = { id: product.product_id, pro_name: product.pro_name, color, size: size, price: product.price, img: product.image[0] }
+    let order = { id: product.product_id, pro_name: product.pro_name, color, size: size, price: product.price, img: product.image[0], qty : 1 }
     const addNewItem = () => {
         addItem(order)
     }
