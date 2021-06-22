@@ -12,24 +12,23 @@ export const newItemReducer = (state = initState, action) => {
             return { count: 0, items: [] }
         case DELETE_ITEM:
             // action.item = item.id
-            return { items: state.items.filter(items => items.id !== action.item), count: state.count - 1 }
+            return { items: state.items.filter(items => items.product_id !== action.item), count: state.count - 1 }
         case INCREMENT_QTY:
             // action.item = item.id
             return {
                 items: state.items.filter((item) => {
-                    return item.id === action.item ? item.qty++ : item.qty
+                    return item.product_id === action.item ? item.qty++ : item.qty
                 }),
-                count: state.count
+                count: state.count,
             }
         case DECREMENT_QTY:
             // action.item = item.id
             return {
                 items: state.items.filter((item) => {
-                    return item.id === action.item ? item.qty-- : item.qty
+                    return item.product_id === action.item ? item.qty-- : item.qty
                 }),
-                count: state.count
+                count: state.count,
             }
-
         default:
             return state;
     }

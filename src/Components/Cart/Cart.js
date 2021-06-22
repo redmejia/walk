@@ -1,7 +1,62 @@
+import { useState } from "react";
 import { connect } from "react-redux"
 import { cancelOrder, deleteItem, incrementQty, decrementQty } from "../../Redux/Actions/Cart";
+const sumTotal = (list) => {
+    let total = 0;
+    let qty = 0;
+    let price = 0;
+    for (let index = 0; index < list.length; index++) {
+        qty = list[index].qty
+        price = list[index].price
+        total += qty * price
+    }
+    return total
+}
+
+const myOrder = (list) => {
+    let orderList = [];
+    let order;
+    for (let index = 0; index < list.length; index++) {
+        order = {
+            product_id: list[index].product_id,
+            pro_name: list[index].pro_name,
+            color: list[index].color,
+            size: list[index].size,
+            qty: list[index].qty,
+            price: list[index].price
+        }
+        orderList.push(order)
+    }
+    return orderList
+}
 
 const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty }) => {
+    const [fName, setFirstName] = useState("");
+    const [LName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
+    const [state, setState] = useState("");
+    const [zip, setZip] = useState("");
+    const [cardName, setCardName] = useState("");
+    const [cardNumber, setCardNumber] = useState("");
+    const [cardCv, setCardCv] = useState("");
+    let tot = sumTotal(item.items);
+    const order = {
+        client : {
+            firs_name: fName,
+            last_name: LName,
+            email : email,
+            address : address,
+            state : state,
+            zip : zip,
+            card_name : cardName,
+            card_number : cardNumber,
+            card_cv : cardCv,
+        },
+        items: myOrder(item.items),
+        total: tot.toFixed(2)
+    }
+    console.log(order);
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -14,35 +69,33 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
                         <div class="modal-body">
                             <span class="badge rounded-pill bg-info text-dark" style={{ float: "right" }}>You have {item.count} item</span>
                             {
-                                item.items.map(i => {
+                                item.items.map((i) => {
                                     return (
                                         <div className="container">
                                             <img src={i.img} alt="producto" style={{ width: 200, height: 100 }}></img>
                                             <div class="row justify-content-center">
                                                 <div className="col-8">
-                                                    <h6>{i.id}</h6>
+                                                    <h6>{i.product_id}</h6>
                                                     <h6>{i.pro_name}</h6>
                                                     <h6>{i.price}</h6>
                                                     <h6>{i.size}</h6>
                                                     <h6>{i.color}</h6>
                                                     <div>
                                                         <span class="badge rounded-pill bg-info text-dark" >qty {i.qty} </span>
-                                                        <h5>New total {i.price * i.qty}</h5>
                                                     </div>
                                                     <div>
                                                         <h5>qty</h5>
                                                         {i.qty === 1 ?
-
                                                             <button class="btn btn-outline-primary" disabled>-</button>
                                                             :
-                                                            <button class="btn btn-outline-primary" onClick={() => decrementQty(i.id)}>-</button>
+                                                            <button class="btn btn-outline-primary" onClick={() => decrementQty(i.product_id)}>-</button>
                                                         }
-                                                        <button class="btn btn-outline-primary" onClick={() => incrementQty(i.id)}>+</button>
+                                                        <button class="btn btn-outline-primary" onClick={() => incrementQty(i.product_id)}>+</button>
                                                     </div>
                                                     <hr></hr>
                                                 </div>
                                                 <div class="col-4" >
-                                                    <button className="btn btn-danger" onClick={() => deleteItem(i.id)}>delete</button>
+                                                    <button className="btn btn-danger" onClick={() => deleteItem(i.product_id)}>delete</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -50,6 +103,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
                                     );
                                 })
                             }
+                            <h1>total : {tot.toFixed(2)}</h1>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick={cancelOrder}>cancel order</button>
@@ -58,6 +112,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
                     </div>
                 </div>
             </div>
+
             <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
@@ -66,19 +121,19 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-
+                            <h1>your order</h1>
                             <h4 class="mb-3">Billing address</h4>
                             <form class="needs-validation" novalidate>
 
                                 <div class="row g-3">
                                     <div class="col-sm-6">
                                         <label for="firstName" class="form-label">First name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="" required />
+                                        <input type="text" class="form-control" id="firstName" placeholder="" required onChange={e => setFirstName(e.target.value)} />
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label for="lastName" class="form-label">Last name</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="" required />
+                                        <input type="text" class="form-control" id="lastName" placeholder="" required onChange={e => setLastName(e.target.value)} />
                                     </div>
 
                                     <div class="col-12">
@@ -91,12 +146,12 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
 
                                     <div class="col-12">
                                         <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                        <input type="email" class="form-control" id="email" placeholder="you@example.com" />
+                                        <input type="email" class="form-control" id="email" placeholder="you@example.com" onChange={e => setEmail(e.target.value)} />
                                     </div>
 
                                     <div class="col-12">
                                         <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required />
+                                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required onChange={e => setAddress(e.target.value)} />
                                     </div>
 
                                     <div class="col-12">
@@ -114,15 +169,16 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
 
                                     <div class="col-md-4">
                                         <label for="state" class="form-label">State</label>
-                                        <select class="form-select" id="state" required>
+                                        <select class="form-select" id="state" required onChange={e => setState(e.target.value)}>
                                             <option value="">Choose...</option>
                                             <option>California</option>
+                                            <option>Texas</option>
                                         </select>
                                     </div>
 
                                     <div class="col-md-3">
                                         <label for="zip" class="form-label">Zip</label>
-                                        <input type="text" class="form-control" id="zip" placeholder="" required />
+                                        <input type="text" class="form-control" id="zip" placeholder="" required onChange={e => setZip(e.target.value)} />
                                     </div>
                                 </div>
 
@@ -146,13 +202,13 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
                                 <div class="row gy-3">
                                     <div class="col-md-6">
                                         <label for="cc-name" class="form-label">Name on card</label>
-                                        <input type="text" class="form-control" id="cc-name" placeholder="" required />
+                                        <input type="text" class="form-control" id="cc-name" placeholder="" required onChange={e => setCardName(e.target.value)} />
                                         <small class="text-muted">Full name as displayed on card</small>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="cc-number" class="form-label">Credit card number</label>
-                                        <input type="text" class="form-control" id="cc-number" placeholder="" required />
+                                        <input type="text" class="form-control" id="cc-number" placeholder="" required onChange={e => setCardNumber(e.target.value)} />
                                     </div>
 
                                     <div class="col-md-3">
@@ -162,12 +218,13 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
 
                                     <div class="col-md-3">
                                         <label for="cc-cvv" class="form-label">CVV</label>
-                                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required />
+                                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required onChange={e => setCardCv(e.target.value)} />
                                     </div>
                                 </div>
 
                             </form>
                         </div>
+
                         <div class="modal-footer">
                             {
                                 user.signin ?

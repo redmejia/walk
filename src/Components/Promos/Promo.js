@@ -54,7 +54,7 @@ const Promo = ({ loadPromotionById, promo, addItem }) => {
             })
         )
     }
-    let order = { id: promo.product_id, pro_name: promo.pro_name, color, size: size, price: promo.price, img: promo.image[0] }
+    let order = { product_id: promo.product_id, pro_name: promo.pro_name, color, size: size, price: promo.price, img: promo.image[0], qty : 1 }
     const addNewItem = () => {
         addItem(order)
     }
