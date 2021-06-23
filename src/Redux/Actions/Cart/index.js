@@ -1,4 +1,5 @@
-import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, NEW_ITEM } from "../../Constants"
+import { BASEURL } from "../../../Api/Utils/url"
+import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM } from "../../Constants"
 // adding new item to my cart
 const newItemAction = (item) => {
     return {
@@ -63,5 +64,26 @@ const DecrementItemQtyAction = (item) => {
 export const decrementQty = (item) => {
     return (dispatch) => {
         dispatch(DecrementItemQtyAction(item))
+    }
+}
+
+//MAKE AN ORDER
+const makeOrderAction = (order) => {
+    return {
+        type : PURCHASE,
+        order
+    }
+}
+
+export const makeOrder = (order) => {
+    return(dispatch) =>{
+        dispatch(makeOrderAction(order))
+        return fetch(BASEURL+"orders",{
+            method: "POST",
+            headers:{
+                'Content-Type' : 'application/json',
+            },
+            body : JSON.stringify(order)
+        })
     }
 }

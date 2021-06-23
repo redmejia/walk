@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux"
-import { cancelOrder, deleteItem, incrementQty, decrementQty } from "../../Redux/Actions/Cart";
+import { cancelOrder, deleteItem, incrementQty, decrementQty, makeOrder } from "../../Redux/Actions/Cart";
 const sumTotal = (list) => {
     let total = 0;
     let qty = 0;
@@ -30,33 +30,34 @@ const myOrder = (list) => {
     return orderList
 }
 
-const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty }) => {
+const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty, makeOrder }) => {
     const [fName, setFirstName] = useState("");
     const [LName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
     const [state, setState] = useState("");
-    const [zip, setZip] = useState("");
+    const [zip, setZip] = useState(0);
     const [cardName, setCardName] = useState("");
     const [cardNumber, setCardNumber] = useState("");
-    const [cardCv, setCardCv] = useState("");
+    const [cardCv, setCardCv] = useState(0);
     let tot = sumTotal(item.items);
+    let items = myOrder(item.items)
     const order = {
-        client : {
+        client: {
             firs_name: fName,
             last_name: LName,
-            email : email,
-            address : address,
-            state : state,
-            zip : zip,
-            card_name : cardName,
-            card_number : cardNumber,
-            card_cv : cardCv,
+            email: email,
+            address: address,
+            state: state,
+            zip: parseInt(zip),
+            card_name: cardName,
+            card_number: cardNumber,
+            cv_number: parseInt(cardCv),
         },
-        items: myOrder(item.items),
-        total: tot.toFixed(2)
+        items: items,
+        total: parseFloat(tot.toFixed(2))
     }
-    console.log(order);
+    // console.log(order);
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -228,7 +229,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty 
                         <div class="modal-footer">
                             {
                                 user.signin ?
-                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">proceed</button>
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" onClick={() => makeOrder(order)}>proceed</button>
                                     : <button type="button" class="btn btn-outline-warning">
                                         Please signin or register
                                     </button>
@@ -272,5 +273,6 @@ const mapDispatchToProps = {
     deleteItem,
     incrementQty,
     decrementQty,
+    makeOrder,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
