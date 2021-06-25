@@ -1,6 +1,6 @@
 import './App.css';
 import Welcome from './Components/Welcome/Welcome';
-import {  BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ProductNav from './Components/ProductNav/ProductNav';
 import TopNav from './Components/TopNav/TopNav';
 import Product from './Components/Product/Product';
@@ -10,6 +10,7 @@ import Heels from './Components/Categories/Womens/Heels';
 import MensBoots from './Components/Categories/Mens/MensBoots';
 import Sport from './Components/Categories/Mens/Sport';
 import Promo from './Components/Promos/Promo';
+import MyOrders from './Components/MyOrders/MyOrders';
 
 const App = () => {
   return (
@@ -30,6 +31,8 @@ const App = () => {
 
           <Route path="/product/pro-name/:name/pro-id/:id" component={Product} />
           <Route path="/promotion/pro-name/:name/pro-id/:id" component={Promo} />
+
+          <Route path="/my-order" component={MyOrders} />
         </Switch>
       </Router>
     </>

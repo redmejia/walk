@@ -1,4 +1,4 @@
-import { CANCEL_ORDER, NEW_ITEM, DELETE_ITEM, INCREMENT_QTY, DECREMENT_QTY, PURCHASE } from "../../Constants";
+import { CANCEL_ORDER, NEW_ITEM, DELETE_ITEM, INCREMENT_QTY, DECREMENT_QTY, PURCHASE, PURCHASE_STATUS } from "../../Constants";
 const initState = {
     count: 0,
     items: []
@@ -34,12 +34,16 @@ export const newItemReducer = (state = initState, action) => {
     }
 }
 
-const initPurchaseState = {}
+const initPurchaseState = {
+    order : {}
+}
 
 export const newPurchaseReducer = (state = initPurchaseState, action) => {
     switch (action.type) {
         case PURCHASE:
-            return action
+            return action.order
+        case PURCHASE_STATUS:
+            return action.orderStatus // not need
         default:
             return state
     }

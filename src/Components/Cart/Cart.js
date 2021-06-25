@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { connect } from "react-redux"
 import { cancelOrder, deleteItem, incrementQty, decrementQty, makeOrder } from "../../Redux/Actions/Cart";
+
 const sumTotal = (list) => {
     let total = 0;
     let qty = 0;
@@ -29,7 +30,6 @@ const myOrder = (list) => {
     }
     return orderList
 }
-
 const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty, makeOrder }) => {
     const [fName, setFirstName] = useState("");
     const [LName, setLastName] = useState("");
@@ -57,6 +57,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
         items: items,
         total: parseFloat(tot.toFixed(2))
     }
+    console.log(item);
     // console.log(order);
     return (
         <div>

@@ -15,12 +15,33 @@ const TopNav = ({ userLogout, user }) => {
             <Link to="/">Logo</Link>
             {
                 user.signin ?
-                    <div>
-                        <button onClick={logOUT} className="drop-btn" style={{ float: 'right' }}>
-                            log out
-                        </button>
-                        {user.user_id}
+                    <div style={{ float: 'right' }}>
+                        <div class="btn-group">
+                            <button type="button" className="drop-btn" style={{ float: 'right' }} data-bs-toggle="dropdown" >
+                                ME
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><Link to="/my-order" style={{ textDecoration: 'none' }}> My orders </Link></li>
+                                <hr></hr>
+                                <li>
+                                    <div class="d-grid gap-2 col-10 mx-auto">
+                                        <button onClick={logOUT} class="btn btn-danger" type="button">log out</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+
+
+
+
+
+                    // <div>
+                    //     <button onClick={logOUT} className="drop-btn" style={{ float: 'right' }}>
+                    //         log out
+                    //     </button>
+                    //     {user.user_id}
+                    // </div>
                     :
                     <User />
             }

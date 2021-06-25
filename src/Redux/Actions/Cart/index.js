@@ -1,5 +1,5 @@
 import { BASEURL } from "../../../Api/Utils/url"
-import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM } from "../../Constants"
+import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM, PURCHASE_STATUS } from "../../Constants"
 // adding new item to my cart
 const newItemAction = (item) => {
     return {
@@ -68,22 +68,35 @@ export const decrementQty = (item) => {
 }
 
 //MAKE AN ORDER
-const makeOrderAction = (order) => {
+const MakeOrderAction = (order) => {
     return {
-        type : PURCHASE,
+        type: PURCHASE,
         order
     }
 }
 
+// CHECK PURCHASE not need
+const CheckPurchaseAction = (orderStatus) => {
+    return {
+        type: PURCHASE_STATUS,
+        orderStatus
+    }
+}
+
 export const makeOrder = (order) => {
-    return(dispatch) =>{
-        dispatch(makeOrderAction(order))
-        return fetch(BASEURL+"orders",{
+    return (dispatch) => {
+        dispatch(MakeOrderAction(order))
+        return fetch(BASEURL + "orders", {
             method: "POST",
-            headers:{
-                'Content-Type' : 'application/json',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            body : JSON.stringify(order)
-        })
+            body: JSON.stringify(order)
+        }).then(res => res.json())
+            .then(res => {
+                if (res.transaction_code === 2) {
+                    dispatch(CheckPurchaseAction(res)) // not need
+                }
+            })
     }
 }
