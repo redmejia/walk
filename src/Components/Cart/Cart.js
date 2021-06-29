@@ -44,7 +44,8 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
     let items = myOrder(item.items)
     const order = {
         client: {
-            firs_name: fName,
+            user_id: user.user_id,
+            first_name: fName,
             last_name: LName,
             email: email,
             address: address,
@@ -57,8 +58,10 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
         items: items,
         total: parseFloat(tot.toFixed(2))
     }
-    console.log(item);
-    // console.log(order);
+    const makeOrderAndCleanCart = (myorder) => {
+        makeOrder(myorder)
+        cancelOrder() // cancel and clean order modal
+    }
     return (
         <div>
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -230,7 +233,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
                         <div class="modal-footer">
                             {
                                 user.signin ?
-                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" onClick={() => makeOrder(order)}>proceed</button>
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" onClick={() => makeOrderAndCleanCart(order)}>proceed</button>
                                     : <button type="button" class="btn btn-outline-warning">
                                         Please signin or register
                                     </button>

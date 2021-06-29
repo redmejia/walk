@@ -1,5 +1,5 @@
 import { BASEURL } from "../../../Api/Utils/url"
-import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM, PURCHASE_STATUS } from "../../Constants"
+import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM, PURCHASE_STATUS, RETRIVE_PURCHASE } from "../../Constants"
 // adding new item to my cart
 const newItemAction = (item) => {
     return {
@@ -75,28 +75,33 @@ const MakeOrderAction = (order) => {
     }
 }
 
-// CHECK PURCHASE not need
-const CheckPurchaseAction = (orderStatus) => {
-    return {
-        type: PURCHASE_STATUS,
-        orderStatus
-    }
-}
 
 export const makeOrder = (order) => {
     return (dispatch) => {
-        dispatch(MakeOrderAction(order))
+        // dispatch(MakeOrderAction(order))
         return fetch(BASEURL + "orders", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(order)
-        }).then(res => res.json())
-            .then(res => {
-                if (res.transaction_code === 2) {
-                    dispatch(CheckPurchaseAction(res)) // not need
-                }
-            })
+        })
     }
+}
+
+// RETRIVE PURCHASE
+const RetrivekPurchaseAction = (order) => {
+    return {
+        type: RETRIVE_PURCHASE,
+        order
+    }
+}
+
+export const retrivePurchase = (id) => {
+    return (dispatch) => {
+        return fetch(BASEURL + "orders?user-id=" + id)
+            .then(res => res.json())
+            .then(data => { dispatch(RetrivekPurchaseAction(data)) })
+    }
+
 }

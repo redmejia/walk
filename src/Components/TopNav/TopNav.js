@@ -22,6 +22,7 @@ const TopNav = ({ userLogout, user }) => {
                             </button>
                             <ul class="dropdown-menu">
                                 <li><Link to="/my-order" style={{ textDecoration: 'none' }}> My orders </Link></li>
+                                {/* <li><Link to="/my-order" style={{ textDecoration: 'none', color : 'red' }}> My orders </Link></li> */}
                                 <hr></hr>
                                 <li>
                                     <div class="d-grid gap-2 col-10 mx-auto">

@@ -18,13 +18,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 const rootReducer = combineReducers(
   {
     register: userRegisterReducer,
-    signin : userSigninReducer,
-    categorie :categorie,
-    product : productReducer,
-    cart : newItemReducer,
-    purchase : newPurchaseReducer,
-    promos : promotionReducer,
-    promo : promotionByIdReducer,
+    signin: userSigninReducer,
+    categorie: categorie,
+    product: productReducer,
+    cart: newItemReducer,
+    purchase: newPurchaseReducer,
+    promos: promotionReducer,
+    promo: promotionByIdReducer,
   }
 )
 
