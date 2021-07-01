@@ -15,20 +15,21 @@ const sumTotal = (list) => {
 }
 
 const myOrder = (list) => {
-    let orderList = [];
-    let order;
-    for (let index = 0; index < list.length; index++) {
-        order = {
-            product_id: list[index].product_id,
-            pro_name: list[index].pro_name,
-            color: list[index].color,
-            size: list[index].size,
-            qty: list[index].qty,
-            price: list[index].price
-        }
-        orderList.push(order)
-    }
-    return orderList
+    let myLista = [...list]
+    // let orderList = [];
+    // let order;
+    // for (let index = 0; index < list.length; index++) {
+    //     order = {
+    //         product_id: list[index].product_id,
+    //         pro_name: list[index].pro_name,
+    //         color: list[index].color,
+    //         size: list[index].size,
+    //         qty: list[index].qty,
+    //         price: list[index].price
+    //     }
+    //     orderList.push(order)
+    // }
+    return myLista
 }
 const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty, makeOrder }) => {
     const [fName, setFirstName] = useState("");
@@ -58,6 +59,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
         items: items,
         total: parseFloat(tot.toFixed(2))
     }
+    // console.log("get the order ", order);
     const makeOrderAndCleanCart = (myorder) => {
         makeOrder(myorder)
         cancelOrder() // cancel and clean order modal

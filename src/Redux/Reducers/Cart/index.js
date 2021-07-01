@@ -35,16 +35,16 @@ export const newItemReducer = (state = initState, action) => {
 }
 
 const initPurchaseState = {
-    order: {}
+    orders: []
 }
 
-export const newPurchaseReducer = (state = initPurchaseState, action) => {
+export const newPurchaseReducer = (state = initPurchaseState.orders, action) => {
     switch (action.type) {
         case PURCHASE:
             // console.log("you are here ", action.order);
-            return action.order
+            return action.orders
         case RETRIVE_PURCHASE:
-            return action.order
+            return action.orders
         default:
             return state
     }

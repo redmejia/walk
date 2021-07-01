@@ -1,5 +1,5 @@
 import { BASEURL } from "../../../Api/Utils/url"
-import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM, PURCHASE_STATUS, RETRIVE_PURCHASE } from "../../Constants"
+import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM, RETRIVE_PURCHASE } from "../../Constants"
 // adding new item to my cart
 const newItemAction = (item) => {
     return {
@@ -78,7 +78,7 @@ const MakeOrderAction = (order) => {
 
 export const makeOrder = (order) => {
     return (dispatch) => {
-        // dispatch(MakeOrderAction(order))
+        dispatch(MakeOrderAction(order))
         return fetch(BASEURL + "orders", {
             method: "POST",
             headers: {
@@ -90,18 +90,18 @@ export const makeOrder = (order) => {
 }
 
 // RETRIVE PURCHASE
-const RetrivekPurchaseAction = (order) => {
+const RetrivekPurchaseAction = (orders) => {
     return {
         type: RETRIVE_PURCHASE,
-        order
+        orders
     }
 }
 
 export const retrivePurchase = (id) => {
     return (dispatch) => {
-        return fetch(BASEURL + "orders?user-id=" + id)
+        fetch(BASEURL + "orders?user-id=" + id)
             .then(res => res.json())
-            .then(data => { dispatch(RetrivekPurchaseAction(data)) })
+            .then(data => dispatch(RetrivekPurchaseAction(data)))
     }
 
 }

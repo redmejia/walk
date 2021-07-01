@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/product/pro-name/:name/pro-id/:id" component={Product} />
           <Route path="/promotion/pro-name/:name/pro-id/:id" component={Promo} />
 
-          <Route path="/my-order" component={MyOrders} />
+          <Route exact path="/my-order" component={MyOrders} />
         </Switch>
       </Router>
     </>
