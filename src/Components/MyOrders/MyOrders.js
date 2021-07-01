@@ -10,6 +10,7 @@ const orderL = (order) => {
                     {
                         <div>
                             <p>
+                                <strong>Order ID # {i.product.purchase_id + " "}</strong>
                                 {i.client.first_name + " " + i.client.last_name + " " + i.client.email + " "}
                                 <strong>Deliver address : </strong> {i.client.address + " " + i.client.state + " " + i.client.zip}
                             </p>
@@ -21,26 +22,20 @@ const orderL = (order) => {
                                 <li>qty :{i.product.qty}</li>
                                 <li>price :{i.product.price}</li>
                             </ul>
-                            {/* {orderList.totals[ii].total} */}
                             {
                                 i.product.status_code === 5 ?
                                     <div>
-                                        <p>
-                                            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                                Somethig went wrong
-                                            </button>
-                                        </p>
-                                        <div class="collapse" id="collapseExample">
-                                            <div class="card card-body">
-                                                Could not compleate transaction
-                                                {/* Could not compleate transaction of {orderList.totals[0].total} */}
+                                        <div >
+                                            <div class="card card-body" style={{ backgroundColor: '#f76157' }}>
+                                                <strong>Order ID # {i.product.purchase_id}</strong>
+                                                Could not compleate transaction of {i.product.total}
                                             </div>
                                         </div>
 
                                     </div>
                                     :
                                     <div class="col-4" >
-                                        <button className="btn btn-danger" onClick={() => alert(i.pur_id)} >cancel my order</button>
+                                        <button className="btn btn-danger" onClick={() => alert(i.product.purchase_id)} >Cancel my order</button>
                                     </div>
                             }
                             <hr></hr>
@@ -60,7 +55,8 @@ const MyOrders = ({ user, order, retrivePurchase }) => {
     return (
         <div className="container">
             {
-                order.orders.length === 0 ?
+                order.orders === null || order.orders === undefined ?
+
                     <p>no order yet</p> :
                     orderL(order)
             }

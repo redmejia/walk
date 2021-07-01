@@ -42,7 +42,7 @@ export const newPurchaseReducer = (state = initPurchaseState.orders, action) => 
     switch (action.type) {
         case PURCHASE:
             // console.log("you are here ", action.order);
-            return action.orders
+            return action.orders 
         case RETRIVE_PURCHASE:
             return action.orders
         default:

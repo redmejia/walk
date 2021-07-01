@@ -68,10 +68,10 @@ export const decrementQty = (item) => {
 }
 
 //MAKE AN ORDER
-const MakeOrderAction = (order) => {
+const MakeOrderAction = (orders) => {
     return {
         type: PURCHASE,
-        order
+        orders
     }
 }
 
