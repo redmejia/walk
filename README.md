@@ -1,7 +1,5 @@
 # WALK
 ## Walk is small shoes ecomerce 
-Walk is a fullstack application where user can register, signin add, delete cancel and check purchase status.
-
 ### Technologies
 * Frontend
   * React js
