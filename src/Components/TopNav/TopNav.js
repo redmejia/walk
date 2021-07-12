@@ -12,7 +12,7 @@ const TopNav = ({ userLogout, user }) => {
     }
     return (
         <div className="container mt-3">
-            <Link to="/">Logo</Link>
+            <Link to="/" style={{textDecoration : 'none', fontSize : 25}}>Walk</Link>
             {
                 user.signin ?
                     <div style={{ float: 'right' }}>

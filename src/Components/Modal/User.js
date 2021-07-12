@@ -21,8 +21,8 @@ const User = ({ NewUserRegister, UserSignin }) => {
 
     const newSignin = () => {
         const user = {
-            email : email,
-            pwd : pwd
+            email: email,
+            pwd: pwd
         }
         console.log(user);
         UserSignin(user);
@@ -42,7 +42,7 @@ const User = ({ NewUserRegister, UserSignin }) => {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-6">
-                                        <form >
+                                        <form onSubmit={newSignin} >
                                             {/* signin */}
                                             <input
                                                 className="form"
@@ -58,11 +58,20 @@ const User = ({ NewUserRegister, UserSignin }) => {
                                                 autoComplete="no"
                                                 onChange={e => setPassword(e.target.value)}
                                             />
+                                            <button
+                                                type="submit"
+                                                onClick={newSignin}
+                                                className="btn btn-success"
+                                                data-bs-dismiss="modal"
+                                            >
+                                                walk
+                                            </button>
                                         </form>
                                     </div>
+
                                     {/* register */}
                                     <div className="col-6">
-                                        <form >
+                                        <form onSubmit={newUser}>
                                             <input
                                                 className="form"
                                                 type="text"
@@ -84,27 +93,15 @@ const User = ({ NewUserRegister, UserSignin }) => {
                                                 autoComplete="no"
                                                 onChange={e => setPassword(e.target.value)}
                                             />
+                                            <button
+                                                type="submit"
+                                                onClick={newUser}
+                                                className="btn btn-success"
+                                                data-bs-dismiss="modal"
+                                            >
+                                                create and signin
+                                            </button>
                                         </form>
-                                    </div>
-                                    <div className="col-6">
-                                        <button
-                                            type="button"
-                                            onClick={newSignin}
-                                            className="btn btn-success"
-                                            data-bs-dismiss="modal"
-                                        >
-                                            walk
-                                        </button>
-                                    </div>
-                                    <div className="col-6">
-                                        <button
-                                            type="button"
-                                            onClick={newUser}
-                                            className="btn btn-success"
-                                            data-bs-dismiss="modal"
-                                        >
-                                            create and signin
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +116,7 @@ const User = ({ NewUserRegister, UserSignin }) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         NewUserRegister: bindActionCreators(NewUserRegister, dispatch),
-        UserSignin : bindActionCreators(UserSignin, dispatch)
+        UserSignin: bindActionCreators(UserSignin, dispatch)
     }
 }
 export default connect(null, mapDispatchToProps)(User);

@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
 const ProductNav = () => {
+    const textDecoStyle = {
+        textDecoration: 'none'
+    }
     return (
         <div className="container mt-4">
             <div className="btn-group" role="group" aria-label="Basic example">
@@ -12,10 +15,10 @@ const ProductNav = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Womens
-                        </button>
+                    </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><Link to="/womens/boots">boots</Link></li>
-                        <li><Link to="/heels">heels</Link></li>
+                        <li><Link to="/womens/boots" style={textDecoStyle}>boots</Link></li>
+                        <li><Link to="/heels" style={textDecoStyle}>heels</Link></li>
                     </ul>
                 </div>
 
@@ -27,10 +30,10 @@ const ProductNav = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Mens
-                        </button>
+                    </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><Link to="/mens/boots">boots</Link></li>
-                        <li><Link to="/sport">sport</Link></li>
+                        <li><Link to="/mens/boots" style={textDecoStyle}>boots</Link></li>
+                        <li><Link to="/sport" style={textDecoStyle}>sport</Link></li>
                     </ul>
                 </div>
             </div>
