@@ -22,7 +22,6 @@ const TopNav = ({ userLogout, user }) => {
                             </button>
                             <ul class="dropdown-menu">
                                 <li><Link to="/my-order" style={{ textDecoration: 'none' }}> My orders </Link></li>
-                                {/* <li><Link to="/my-order" style={{ textDecoration: 'none', color : 'red' }}> My orders </Link></li> */}
                                 <hr></hr>
                                 <li>
                                     <div class="d-grid gap-2 col-10 mx-auto">
@@ -32,17 +31,6 @@ const TopNav = ({ userLogout, user }) => {
                             </ul>
                         </div>
                     </div>
-
-
-
-
-
-                    // <div>
-                    //     <button onClick={logOUT} className="drop-btn" style={{ float: 'right' }}>
-                    //         log out
-                    //     </button>
-                    //     {user.user_id}
-                    // </div>
                     :
                     <User />
             }

@@ -27,8 +27,8 @@ const orderL = (order) => {
                                     <div>
                                         <div >
                                             <div class="card card-body" style={{ backgroundColor: '#f76157' }}>
-                                                <strong>Order ID # {i.product.purchase_id}</strong>
-                                                Could not compleate transaction of {i.product.total}
+                                                {/* <strong>Order ID # {i.product.purchase_id}</strong> */}
+                                                Could not compleate transaction  <strong>Order ID # {i.product.purchase_id} of Total : {i.product.total}</strong>
                                             </div>
                                         </div>
 
