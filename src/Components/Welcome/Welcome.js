@@ -1,6 +1,4 @@
 import welcome from '../../assets/welcome.jpg'
-import MensBoots from '../Categories/Mens/MensBoots'
-import Sport from '../Categories/Mens/Sport'
 import Promos from '../Promos/Promos'
 const Welcome = () => {
     return (
