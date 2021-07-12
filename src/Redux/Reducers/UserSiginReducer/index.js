@@ -3,6 +3,7 @@ import { LOG_OUT, SIGNIN } from "../../Constants";
 const initState = {
     user: {
         signin: false,
+        user_name : '',
         user_id: 0
     }
 }

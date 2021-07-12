@@ -18,7 +18,7 @@ const TopNav = ({ userLogout, user }) => {
                     <div style={{ float: 'right' }}>
                         <div class="btn-group">
                             <button type="button" className="drop-btn" style={{ float: 'right' }} data-bs-toggle="dropdown" >
-                                ME
+                               @{user.user_name} 
                             </button>
                             <ul class="dropdown-menu">
                                 <li><Link to="/my-order" style={{ textDecoration: 'none' }}> My orders </Link></li>
