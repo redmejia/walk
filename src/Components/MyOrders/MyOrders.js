@@ -29,8 +29,8 @@ const orderL = (order) => {
                                             <div class="card card-body" style={{ backgroundColor: '#f76157' }}>
                                                 Could not compleate transaction  <strong>Order ID # {i.product.purchase_id} of Total : {i.product.total}</strong>
                                             </div>
+                                            <button className="btn btn-danger" onClick={() => alert(i.product.purchase_id)} >Cancel my order</button>
                                         </div>
-
                                     </div>
                                     :
                                     <div class="col-4" >
@@ -55,8 +55,10 @@ const MyOrders = ({ user, order, retrivePurchase }) => {
         <div className="container">
             {
                 order.orders === null || order.orders === undefined ?
-
-                    <p>no order yet</p> :
+                    <div class="alert alert-primary" role="alert" style={{ textAlign: 'center' }}>
+                        NO ORDER YET
+                    </div>
+                    :
                     orderL(order)
             }
 
