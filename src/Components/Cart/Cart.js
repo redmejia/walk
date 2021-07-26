@@ -46,7 +46,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
         items: items,
         total: parseFloat(tot.toFixed(2))
     }
-    // console.log("get the order ", order);
+
     const makeOrderAndCleanCart = (myorder) => {
         makeOrder(myorder)
         cancelOrder() // cancel and clean order modal
@@ -57,7 +57,6 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            {/* <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5> */}
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
