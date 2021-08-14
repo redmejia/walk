@@ -116,9 +116,8 @@ const DeleteItemRefoundAction = (orderID) => {
 export const cancelPurchaseItem = (orderID) => {
     return (dispatch) => {
         dispatch(DeleteItemRefoundAction(orderID))
-        // return fetch(BASEURL + "orders?del-refound=" + orderID, {
-        //     method: "DELETE"
-        // })
-
+        return fetch(BASEURL + "orders?del-refound=" + orderID, {
+            method: "DELETE"
+        })
     }
 }

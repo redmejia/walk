@@ -46,9 +46,7 @@ export const newPurchaseReducer = (state = initPurchaseState, action) => {
         case RETRIVE_PURCHASE:
             return action.orders
         case DELETE_ITEM_REFOUND:
-            console.log(">", state.orders);
             return { orders :  state.orders.filter(order => order.client.purchase_id !== action.orderID) } 
-
         default:
             return state
     }
