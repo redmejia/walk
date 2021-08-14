@@ -1,4 +1,4 @@
-import { CANCEL_ORDER, NEW_ITEM, DELETE_ITEM, INCREMENT_QTY, DECREMENT_QTY, PURCHASE, PURCHASE_STATUS, RETRIVE_PURCHASE } from "../../Constants";
+import { CANCEL_ORDER, NEW_ITEM, DELETE_ITEM, INCREMENT_QTY, DECREMENT_QTY, PURCHASE, PURCHASE_STATUS, RETRIVE_PURCHASE, DELETE_ITEM_REFOUND } from "../../Constants";
 const initState = {
     count: 0,
     items: []
@@ -38,13 +38,17 @@ const initPurchaseState = {
     orders: []
 }
 
-export const newPurchaseReducer = (state = initPurchaseState.orders, action) => {
+export const newPurchaseReducer = (state = initPurchaseState, action) => {
     switch (action.type) {
         case PURCHASE:
             // console.log("you are here ", action.order);
-            return action.orders 
+            return action.orders
         case RETRIVE_PURCHASE:
             return action.orders
+        case DELETE_ITEM_REFOUND:
+            console.log(">", state.orders);
+            return { orders :  state.orders.filter(order => order.client.purchase_id !== action.orderID) } 
+
         default:
             return state
     }

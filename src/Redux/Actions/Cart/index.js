@@ -1,5 +1,5 @@
 import { BASEURL } from "../../../Api/Utils/url"
-import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM, RETRIVE_PURCHASE } from "../../Constants"
+import { CANCEL_ORDER, DECREMENT_QTY, DELETE_ITEM, INCREMENT_QTY, PURCHASE, NEW_ITEM, RETRIVE_PURCHASE, DELETE_ITEM_REFOUND } from "../../Constants"
 // adding new item to my cart
 const newItemAction = (item) => {
     return {
@@ -104,4 +104,21 @@ export const retrivePurchase = (id) => {
             .then(data => dispatch(RetrivekPurchaseAction(data)))
     }
 
+}
+// Deleting and refound. 
+const DeleteItemRefoundAction = (orderID) => {
+    return {
+        type: DELETE_ITEM_REFOUND,
+        orderID
+    }
+}
+
+export const cancelPurchaseItem = (orderID) => {
+    return (dispatch) => {
+        dispatch(DeleteItemRefoundAction(orderID))
+        // return fetch(BASEURL + "orders?del-refound=" + orderID, {
+        //     method: "DELETE"
+        // })
+
+    }
 }

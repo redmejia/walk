@@ -49,6 +49,16 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
 
     const makeOrderAndCleanCart = (myorder) => {
         makeOrder(myorder)
+
+        // setFirstName("")
+        // setLastName("")
+        // setEmail("")
+        // setAddress("")
+        // setState("")
+        // setZip(0)
+        // setCardName("")
+        // setCardNumber("")
+        // setCardCv(0)
         cancelOrder() // cancel and clean order modal
     }
     return (
@@ -100,7 +110,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick={cancelOrder}>cancel order</button>
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Check Out</button>
+                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" >Check Out</button>
                         </div>
                     </div>
                 </div>
@@ -116,32 +126,33 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
                         <div class="modal-body">
                             <h1>your order</h1>
                             <h4 class="mb-3">Billing address</h4>
-                            <form class="needs-validation" novalidate>
+                            {/* <form class="needs-validation" novalidate> */}
+                            <form onSubmit={() => makeOrderAndCleanCart(order)} >
 
                                 <div class="row g-3 ">
                                     <div class="col-sm-6">
                                         {/* <label for="firstName" class="form-label ">First name</label> */}
-                                        <input type="text" class="form-control form" id="firstName" placeholder="First Name" required onChange={e => setFirstName(e.target.value)} />
+                                        <input type="text" class=" form" id="firstName" placeholder="First Name" required name={fName} onChange={e => setFirstName(e.target.value)} />
                                     </div>
 
                                     <div class="col-sm-6">
                                         {/* <label for="lastName" class="form-label">Last name</label> */}
-                                        <input type="text" class="form-control form" id="lastName" placeholder="Last Name" required onChange={e => setLastName(e.target.value)} />
+                                        <input type="text" class=" form" id="lastName" placeholder="Last Name" required name={LName} onChange={e => setLastName(e.target.value)} />
                                     </div>
 
                                     <div class="col-12">
                                         <label for="email" class="form-label">Email </label>
-                                        <input type="email" class="form-control form" id="email" placeholder="you@example.com" onChange={e => setEmail(e.target.value)} />
+                                        <input type="email" class="form" id="email" placeholder="you@example.com" name={email} onChange={e => setEmail(e.target.value)} />
                                     </div>
 
                                     <div class="col-12">
                                         <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control form" id="address" placeholder="1234 Main St" required onChange={e => setAddress(e.target.value)} />
+                                        <input type="text" class=" form" id="address" placeholder="1234 Main St" required name={address} onChange={e => setAddress(e.target.value)} />
                                     </div>
 
                                     <div class="col-md-4">
                                         <label for="state" class="form-label">State</label>
-                                        <select class="form-select form" id="state" required onChange={e => setState(e.target.value)}>
+                                        <select class="form-select form" id="state" required name={state} onChange={e => setState(e.target.value)}>
                                             <option value="">Choose...</option>
                                             <option>California</option>
                                             <option>Texas</option>
@@ -150,7 +161,7 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
 
                                     <div class="col-md-3">
                                         <label for="zip" class="form-label">Zip</label>
-                                        <input type="text" class="form-control form" id="zip" placeholder="" required onChange={e => setZip(e.target.value)} />
+                                        <input type="text" class=" form" id="zip" placeholder="" required name={zip} onChange={e => setZip(e.target.value)} />
                                     </div>
                                 </div>
                                 {/* Not yet */}
@@ -174,23 +185,23 @@ const Cart = ({ item, user, cancelOrder, deleteItem, incrementQty, decrementQty,
                                 <div class="row gy-3">
                                     <div class="col-md-6">
                                         <label for="cc-name" class="form-label">Name on card</label>
-                                        <input type="text" class="form-control form" id="cc-name" placeholder="" required onChange={e => setCardName(e.target.value)} />
+                                        <input type="text" class=" form" id="cc-name" placeholder="" name={cardName} required onChange={e => setCardName(e.target.value)} />
                                         <small class="text-muted">Full name as displayed on card</small>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="cc-number" class="form-label">Credit card number</label>
-                                        <input type="text" class="form-control form" id="cc-number" placeholder="" required onChange={e => setCardNumber(e.target.value)} />
+                                        <input type="text" class=" form" id="cc-number" placeholder="" required name={cardNumber} onChange={e => setCardNumber(e.target.value)} />
                                     </div>
 
                                     <div class="col-md-3">
                                         <label for="cc-expiration" class="form-label">Expiration</label>
-                                        <input type="text" class="form-control form" id="cc-expiration" placeholder="" required />
+                                        <input type="text" class=" form" id="cc-expiration" placeholder="" required />
                                     </div>
 
                                     <div class="col-md-3">
                                         <label for="cc-cvv" class="form-label">CVV</label>
-                                        <input type="text" class="form-control form" id="cc-cvv" placeholder="" required onChange={e => setCardCv(e.target.value)} />
+                                        <input type="text" class=" form" id="cc-cvv" placeholder="" required name={cardCv} onChange={e => setCardCv(e.target.value)} />
                                     </div>
                                 </div>
 

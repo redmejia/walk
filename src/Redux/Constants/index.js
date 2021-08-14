@@ -21,6 +21,8 @@ export const NEW_ITEM = "NEW_ITEM";
 export const CANCEL_ORDER = "CANCEL_ORDER";
 // delete item on client side
 export const DELETE_ITEM = "DELETE_ITEM";
+// delete and refound iterm 
+export const DELETE_ITEM_REFOUND = "DELETE_ITEM_REFOUND";
 // increment qty 
 export const INCREMENT_QTY = "INCREMENT_QTY";
 // decrement qty

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { retrivePurchase } from "../../Redux/Actions/Cart";
+import { retrivePurchase, cancelPurchaseItem } from "../../Redux/Actions/Cart";
 
-const orderL = (order) => {
+const orderL = (order, cancelPurchaseItem) => {
     return (
         order.orders.map((i) => {
             return (
@@ -34,7 +34,7 @@ const orderL = (order) => {
                                     </div>
                                     :
                                     <div class="col-4" >
-                                        <button className="btn btn-danger" onClick={() => alert(i.product.purchase_id)} >Cancel my order</button>
+                                        <button className="btn btn-danger" onClick={() => cancelPurchaseItem(i.product.purchase_id)} >Cancel my order</button>
                                     </div>
                             }
                             <hr></hr>
@@ -46,20 +46,22 @@ const orderL = (order) => {
         })
     );
 }
-const MyOrders = ({ user, order, retrivePurchase }) => {
+const MyOrders = ({ user, order, retrivePurchase, cancelPurchaseItem }) => {
     const { user_id } = user
     useEffect(() => {
         retrivePurchase(user_id)
     }, [retrivePurchase, user_id])
+
+    
     return (
         <div className="container">
             {
                 order.orders === null || order.orders === undefined ?
                     <div class="alert alert-primary" role="alert" style={{ textAlign: 'center' }}>
-                        NO ORDER YET
+                        NO ORDER YET 
                     </div>
                     :
-                    orderL(order)
+                    orderL(order, cancelPurchaseItem)
             }
 
         </div>
@@ -82,6 +84,7 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    retrivePurchase
+    retrivePurchase,
+    cancelPurchaseItem
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MyOrders);
