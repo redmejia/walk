@@ -6,7 +6,7 @@
   * Bootstrap
   * Redux 
 * Backend
-  * [Go](https://github.com/redmejia/walk-api) 
+  * [walk-api](https://github.com/redmejia/walk-api) 
 * Data storage  
   * Postgresql
 
